@@ -1,7 +1,4 @@
-import { IRgb } from "../Interfaces/IRgb";
-import { IRgba } from "../Interfaces/IRgba";
-import { IHsla } from "../Interfaces/IHsla";
-import { IHsl } from "../Interfaces/IHsl";
+import { IRgb, IRgba, IHsla, IHsl } from "../Interfaces";
 
 export class ColorUtils {
     /**

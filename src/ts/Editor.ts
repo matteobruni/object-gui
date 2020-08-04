@@ -1,4 +1,4 @@
-import { EditorContainer } from "./Editors/EditorContainer";
+import { EditorContainer } from "./Editors";
 
 export class Editor {
     public readonly container: EditorContainer;
