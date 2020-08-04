@@ -35,11 +35,11 @@ export class Editor {
         return this;
     }
 
-    public theme(theme: string) {
+    public theme(theme: string): void {
         this.container.element.classList.add(`editor-${theme}`);
     }
 
-    protected customize() {
+    protected customize(): void {
         // override this method to add properties
     }
 }
