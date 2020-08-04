@@ -13,7 +13,7 @@
     "objectgui"
   ],
   "author": "Matteo Bruni <ar3s@icloud.com>",
-  "homepage": "https://editor.matteobruni.it/",
+  "homepage": "https://github.com/matteobruni/object-gui/",
   "license": "ISC",
   "directories": {
     "dist": "dist"
