@@ -1,7 +1,7 @@
 {
-  "name": "objectgui",
-  "version": "1.0.0-alpha.3",
-  "description": "ObjectGUI - Fully customizable Javascript Object GUI Editor",
+  "name": "object-gui",
+  "version": "1.0.0-alpha.0",
+  "description": "Object GUI - Fully customizable Javascript Object GUI Editor",
   "keywords": [
     "editor",
     "dat.gui",
@@ -9,6 +9,7 @@
     "wyiswyg",
     "object",
     "gui",
+    "object-gui",
     "objectgui"
   ],
   "author": "Matteo Bruni <ar3s@icloud.com>",
