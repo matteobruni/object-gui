@@ -1,6 +1,6 @@
-# ObjectGUI - Javascript Object Editor
+# Object GUI - Javascript Object Editor
 
-ObjectGUI is your fully customizable Javascript Object GUI Editor
+Object GUI is your fully customizable Javascript Object GUI Editor
 
 ## Usage
 
