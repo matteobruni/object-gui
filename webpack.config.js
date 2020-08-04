@@ -7,7 +7,7 @@ const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const banner = `Author : Matteo Bruni - https://www.matteobruni.it
 MIT license: https://opensource.org/licenses/MIT
 Demo / Generator : https://editor.matteobruni.it/
-GitHub : https://www.github.com/matteobruni/objectgui
+GitHub : https://www.github.com/matteobruni/object-gui
 How to use? : Check the GitHub README
 v${version}`;
 
@@ -73,7 +73,7 @@ const getJsConfig = (entry) => {
 
 module.exports = [
     getJsConfig({
-        "js/objectgui": "./dist/js/index.js",
-        "js/objectgui.min": "./dist/js/index.js"
+        "js/object-gui": "./dist/js/index.js",
+        "js/object-gui.min": "./dist/js/index.js"
     })
 ];

@@ -22,12 +22,12 @@
     "dist/**/*"
   ],
   "main": "dist/js/index.js",
-  "jsdelivr": "dist/js/objectgui.min.js",
-  "unpkg": "dist/js/objectgui.min.js",
+  "jsdelivr": "dist/js/object-gui.min.js",
+  "unpkg": "dist/js/object-gui.min.js",
   "browser": "dist/js/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matteobruni/objectgui.git"
+    "url": "git+https://github.com/matteobruni/object-gui.git"
   },
   "scripts": {
     "prettify:src": "prettier --write ./src/",
@@ -36,12 +36,12 @@
     "clear:dist": "rimraf -f ./dist",
     "build:ts:es": "tsc -b tsconfig.browser.json",
     "build:ts": "tsc",
-    "build:css": "sass src/scss/editor.scss dist/css/objectgui.css",
+    "build:css": "sass src/scss/editor.scss dist/css/object-gui.css",
     "build": "yarn clear:dist && yarn build:css && yarn prettify:src && yarn build:ts:es && yarn lint && webpack -p && yarn build:ts && yarn prettify:readme",
     "prepare": "yarn build"
   },
   "bugs": {
-    "url": "https://github.com/matteobruni/objectgui/issues"
+    "url": "https://github.com/matteobruni/object-gui/issues"
   },
   "dependencies": {
     "tslib": "^2.0.0"
