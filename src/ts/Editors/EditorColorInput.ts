@@ -29,7 +29,7 @@ export class EditorColorInput extends EditorItem {
     protected createElement(): HTMLElement {
         const element = document.createElement("input");
 
-        element.setAttribute("type", "text");
+        element.setAttribute("type", "color");
 
         return element;
     }
