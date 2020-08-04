@@ -20,7 +20,10 @@
   "files": [
     "dist/**/*"
   ],
-  "main": "dist/js/objectgui.min.js",
+  "main": "dist/js/index.js",
+  "jsdelivr": "dist/js/objectgui.min.js",
+  "unpkg": "dist/js/objectgui.min.js",
+  "browser": "dist/js/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/matteobruni/objectgui.git"
