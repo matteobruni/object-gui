@@ -23,7 +23,7 @@
   "main": "dist/js/objectgui.min.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matteobruni/joe.git"
+    "url": "git+https://github.com/matteobruni/objectgui.git"
   },
   "scripts": {
     "prettify:src": "prettier --write ./src/",
