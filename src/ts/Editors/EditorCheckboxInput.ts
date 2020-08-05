@@ -9,12 +9,12 @@ export class EditorCheckboxInput extends EditorItem {
         private readonly change: (value: boolean) => void
     ) {
         super(data);
+
         const input = this.element as HTMLInputElement;
 
         input.id = `input_${this.name}`;
         input.checked = this.value;
-
-        input.setAttribute("type", "checkbox");
+        input.type = "checkbox";
 
         input.addEventListener("change", () => {
             this.value = (this.element as HTMLInputElement).checked;

@@ -14,8 +14,7 @@ export class EditorNumberInput extends EditorItem {
 
         input.id = `input_${this.name}`;
         input.value = value?.toString();
-
-        input.setAttribute("type", "number");
+        input.type = "number";
 
         input.addEventListener("change", () => {
             this.value = parseFloat((this.element as HTMLInputElement).value);
