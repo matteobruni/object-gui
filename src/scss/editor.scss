@@ -48,9 +48,12 @@
   select {
     padding: 0.25rem;
     border-radius: 0.25rem;
-    height: calc(1rem + 2px);
     font-size: 1rem;
     width: 100%;
+  }
+
+  input:not([type="button"]):not([type="checkbox"]) {
+    height: calc(1rem + 2px);
   }
 
   input[type="checkbox"] {
