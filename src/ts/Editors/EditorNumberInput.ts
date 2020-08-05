@@ -59,7 +59,48 @@ export class EditorNumberInput extends EditorItem {
         return this;
     }
 
-    private updateDragger(e: MouseEvent, down: boolean, rangeLeft: number, rangeWidth: number, dragger: HTMLElement) {
+    public updateCollapse(collapsed: boolean): void {
+        super.updateCollapse(collapsed);
+
+        if (this._max === undefined || this._min === undefined) {
+            return;
+        }
+
+        const parent = this.element.parentElement;
+
+        if (!parent) {
+            return;
+        }
+
+        const range = parent.querySelector(".range-slider") as HTMLElement;
+
+        if (!range) {
+            return;
+        }
+
+        const dragger = range.querySelector("span") as HTMLElement;
+
+        if (!dragger) {
+            return;
+        }
+
+        const rangeWidth = range.offsetWidth;
+        const max = this._max ?? 0;
+        const min = this._min ?? 0;
+        const denom = Math.abs(max) + Math.abs(min);
+        const width = denom !== 0 ? this.value / denom : 0;
+
+        dragger.style.width = `${width * rangeWidth}px`;
+        dragger.style.left = "0px";
+        dragger.style.marginLeft = "0px";
+    }
+
+    private updateDragger(e: MouseEvent, down: boolean, dragger: HTMLElement) {
+        const elem = e.target as HTMLElement;
+        const rect = elem.getBoundingClientRect();
+        const rangeLeft = rect.left;
+        const rangeWidth = elem.offsetWidth;
+
         if (down && e.pageX >= rangeLeft && e.pageX <= rangeLeft + rangeWidth) {
             const max = this._max ?? 0;
             const min = this._min ?? 0;
@@ -109,11 +150,8 @@ export class EditorNumberInput extends EditorItem {
 
         const dragger = slider.children[0] as HTMLElement;
 
-        const rect = slider.getBoundingClientRect();
-
-        let rangeLeft = rect.left;
-        let rangeWidth = slider.offsetWidth;
         let down = false;
+        const rangeWidth = slider.offsetWidth;
         const max = this._max ?? 0;
         const min = this._min ?? 0;
         const denom = Math.abs(max) + Math.abs(min);
@@ -130,13 +168,13 @@ export class EditorNumberInput extends EditorItem {
 
             down = true;
 
-            this.updateDragger(e as MouseEvent, down, rangeLeft, rangeWidth, dragger);
+            this.updateDragger(e as MouseEvent, down, dragger);
 
             return false;
         });
 
         document.addEventListener("mousemove", (e) => {
-            this.updateDragger(e, down, rangeLeft, rangeWidth, dragger);
+            this.updateDragger(e, down, dragger);
         });
 
         document.addEventListener("mouseup", () => {
@@ -144,12 +182,7 @@ export class EditorNumberInput extends EditorItem {
         });
 
         window.addEventListener("resize", () => {
-            console.log("resize");
-            const rect = slider.getBoundingClientRect();
-
-            rangeLeft = rect.left;
-            rangeWidth = slider.offsetWidth;
-
+            const rangeWidth = slider.offsetWidth;
             const max = this._max ?? 0;
             const min = this._min ?? 0;
             const denom = Math.abs(max) + Math.abs(min);

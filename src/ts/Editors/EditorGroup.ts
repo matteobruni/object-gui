@@ -17,11 +17,12 @@ export class EditorGroup extends EditorItem {
         public readonly name: string,
         private readonly title: string,
         parent: HTMLElement,
-        private collapsed: boolean,
+        collapsed: boolean,
         themeSelect?: HTMLSelectElement
     ) {
         super(data);
 
+        this.collapsed = collapsed;
         this.children = [];
 
         this.element.id = name;
@@ -92,7 +93,11 @@ export class EditorGroup extends EditorItem {
     }
 
     public addGroup(name: string, title: string, collapsed = true): EditorGroup {
-        return new EditorGroup(this.data, `${this.name}_${name}`, title, this.childrenGroup, collapsed);
+        const subGroup = new EditorGroup(this.data, `${this.name}_${name}`, title, this.childrenGroup, collapsed);
+
+        this.children.push(subGroup);
+
+        return subGroup;
     }
 
     public addProperty(
@@ -134,6 +139,8 @@ export class EditorGroup extends EditorItem {
                 item = new EditorStringInput(this.data, inputName, label, value as string, change);
         }
 
+        this.children.push(item);
+
         if (value === undefined) {
             (item.element as HTMLInputElement).value = "";
         }
@@ -148,11 +155,17 @@ export class EditorGroup extends EditorItem {
     public addButton(name: string, label: string, click: () => void): void {
         const button = new EditorButton(this.data, `${this.name}_${name}`, label, click);
 
+        this.children.push(button);
+
         this.childrenGroup.append(button.element);
     }
 
     public toggleCollapse(): void {
-        this.collapsed = !this.collapsed;
+        this.updateCollapse(!this.collapsed);
+    }
+
+    public updateCollapse(collapsed: boolean): void {
+        super.updateCollapse(collapsed);
 
         this.setCollapse();
     }
@@ -164,14 +177,14 @@ export class EditorGroup extends EditorItem {
     private setCollapse(): void {
         if (this.collapsed) {
             this.childrenGroup.style.display = "none";
-        } else {
-            this.childrenGroup.style.display = "block";
-        }
-
-        if (this.collapsed) {
             this.collapseButton.textContent = "Expand";
         } else {
+            this.childrenGroup.style.display = "block";
             this.collapseButton.textContent = "Collapse";
+        }
+
+        for (const child of this.children) {
+            child.updateCollapse(this.collapsed);
         }
     }
 }
