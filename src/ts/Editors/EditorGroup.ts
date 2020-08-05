@@ -12,12 +12,13 @@ export class EditorGroup extends EditorItem {
     private readonly childrenGroup: HTMLElement;
     private readonly collapseButton: HTMLButtonElement;
 
-    constructor(
+    private constructor(
         data: unknown,
         public readonly name: string,
         private readonly title: string,
+        parent: HTMLElement,
         private collapsed: boolean,
-        parent: HTMLElement
+        themeSelect?: HTMLSelectElement
     ) {
         super(data);
 
@@ -41,6 +42,16 @@ export class EditorGroup extends EditorItem {
 
         divName.append(b);
         divTitle.append(divName);
+
+        if (themeSelect) {
+            const divTheme = document.createElement("div");
+
+            divTheme.classList.add("editor-button-theme");
+
+            divTheme.append(themeSelect);
+
+            divTitle.append(divTheme);
+        }
 
         const divCollapse = document.createElement("div");
 
@@ -70,12 +81,18 @@ export class EditorGroup extends EditorItem {
         this.setCollapse();
     }
 
-    protected createElement(): HTMLElement {
-        return document.createElement("div");
+    public static createRoot(
+        name: string,
+        title: string,
+        data: unknown,
+        parent: HTMLElement,
+        themeSelect: HTMLSelectElement
+    ): EditorGroup {
+        return new EditorGroup(data, `${this.name}_${name}`, title, parent, false, themeSelect);
     }
 
     public addGroup(name: string, title: string, collapsed = true): EditorGroup {
-        return new EditorGroup(this.data, `${this.name}_${name}`, title, collapsed, this.childrenGroup);
+        return new EditorGroup(this.data, `${this.name}_${name}`, title, this.childrenGroup, collapsed);
     }
 
     public addProperty(
@@ -134,6 +151,16 @@ export class EditorGroup extends EditorItem {
         this.childrenGroup.append(button.element);
     }
 
+    public toggleCollapse(): void {
+        this.collapsed = !this.collapsed;
+
+        this.setCollapse();
+    }
+
+    protected createElement(): HTMLElement {
+        return document.createElement("div");
+    }
+
     private setCollapse(): void {
         if (this.collapsed) {
             this.childrenGroup.style.display = "none";
@@ -146,11 +173,5 @@ export class EditorGroup extends EditorItem {
         } else {
             this.collapseButton.textContent = "Collapse";
         }
-    }
-
-    public toggleCollapse(): void {
-        this.collapsed = !this.collapsed;
-
-        this.setCollapse();
     }
 }

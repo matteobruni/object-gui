@@ -31,17 +31,35 @@
     }
   }
 
-  input,
-  select,
-  label,
-  .editor-item-name,
+  label {
+    flex: 1;
+  }
+
   .editor-button-collapse {
     flex: 1;
   }
 
+  .editor-button-theme {
+    flex: 1;
+
+    select {
+      min-width: 80px;
+      margin-top: 0.22rem !important;
+    }
+  }
+
+  .editor-item-name {
+    flex: 1;
+  }
+
+  input,
+  select {
+    flex: 2;
+  }
+
   label {
     line-height: 1.5;
-    padding-top: 0.25rem;
+    padding-top: 0.125rem;
   }
 
   input:not([type="button"]):not([type="checkbox"]),
@@ -105,7 +123,7 @@
 }
 
 @include theme.create-theme("light", #fff, #000, #000);
-@include theme.create-theme("dark", #000, #fff, #fff);
+@include theme.create-theme("dark", #333, #fff, #fff);
 @include theme.create-theme("red", #dc3545, #fff, rgba(0, 0, 0, 0.125));
 @include theme.create-theme("blue", #007bff, #fff, rgba(0, 0, 0, 0.125));
 @include theme.create-theme("green", #28a745, #fff, rgba(0, 0, 0, 0.125));
