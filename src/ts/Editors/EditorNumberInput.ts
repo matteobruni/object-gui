@@ -14,6 +14,9 @@ export class EditorNumberInput extends EditorItem {
 
         input.id = `input_${this.name}`;
         input.value = value?.toString();
+
+        input.setAttribute("type", "number");
+
         input.addEventListener("change", () => {
             this.value = parseFloat((this.element as HTMLInputElement).value);
 
@@ -22,11 +25,7 @@ export class EditorNumberInput extends EditorItem {
     }
 
     protected createElement(): HTMLElement {
-        const element = document.createElement("input");
-
-        element.setAttribute("type", "number");
-
-        return element;
+        return document.createElement("input");
     }
 
     public step(step: number): EditorNumberInput {

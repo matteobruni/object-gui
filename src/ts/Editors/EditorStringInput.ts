@@ -14,6 +14,8 @@ export class EditorStringInput extends EditorItem {
         input.id = `input_${this.name}`;
         input.value = this.value;
 
+        input.setAttribute("type", "text");
+
         input.addEventListener("change", () => {
             this.value = (this.element as HTMLInputElement).value;
 
@@ -22,10 +24,6 @@ export class EditorStringInput extends EditorItem {
     }
 
     protected createElement(): HTMLElement {
-        const element = document.createElement("input");
-
-        element.setAttribute("type", "text");
-
-        return element;
+        return document.createElement("input");
     }
 }

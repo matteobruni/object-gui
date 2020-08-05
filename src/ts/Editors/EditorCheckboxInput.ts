@@ -14,6 +14,8 @@ export class EditorCheckboxInput extends EditorItem {
         input.id = `input_${this.name}`;
         input.checked = this.value;
 
+        input.setAttribute("type", "checkbox");
+
         input.addEventListener("change", () => {
             this.value = (this.element as HTMLInputElement).checked;
 
@@ -22,10 +24,6 @@ export class EditorCheckboxInput extends EditorItem {
     }
 
     protected createElement(): HTMLElement {
-        const element = document.createElement("input");
-
-        element.setAttribute("type", "checkbox");
-
-        return element;
+        return document.createElement("input");
     }
 }

@@ -14,6 +14,8 @@ export class EditorColorInput extends EditorItem {
 
         input.id = `input_${this.name}`;
         input.value = this.value;
+        
+        input.setAttribute("type", "color");
 
         this.updateStyle(input.value);
 
@@ -27,11 +29,7 @@ export class EditorColorInput extends EditorItem {
     }
 
     protected createElement(): HTMLElement {
-        const element = document.createElement("input");
-
-        element.setAttribute("type", "color");
-
-        return element;
+        return document.createElement("input");
     }
 
     private updateStyle(bgColor: string) {
