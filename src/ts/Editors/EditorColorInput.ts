@@ -14,7 +14,7 @@ export class EditorColorInput extends EditorItem {
 
         input.id = `input_${this.name}`;
         input.value = this.value;
-        
+
         input.setAttribute("type", "color");
 
         this.updateStyle(input.value);
