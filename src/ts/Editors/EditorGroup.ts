@@ -7,9 +7,9 @@ import { EditorSelectInput } from "./EditorSelectInput";
 import { EditorColorInput } from "./EditorColorInput";
 import { SingleOrMultiple } from "../Types/SingleOrMultiple";
 
-export class EditorContainer extends EditorItem {
+export class EditorGroup extends EditorItem {
     public readonly children: EditorItem[];
-    private readonly childrenContainer: HTMLElement;
+    private readonly childrenGroup: HTMLElement;
     private readonly collapseButton: HTMLButtonElement;
 
     constructor(
@@ -25,15 +25,15 @@ export class EditorContainer extends EditorItem {
 
         this.element.id = name;
 
-        this.element.classList.add("editor", "container");
+        this.element.classList.add("editor", "editor-group");
 
         const divTitle = document.createElement("div");
 
-        divTitle.classList.add("title");
+        divTitle.classList.add("editor-item-title");
 
         const divName = document.createElement("div");
 
-        divName.classList.add("name");
+        divName.classList.add("editor-item-name");
 
         const b = document.createElement("b");
 
@@ -44,7 +44,7 @@ export class EditorContainer extends EditorItem {
 
         const divCollapse = document.createElement("div");
 
-        divCollapse.classList.add("collapse");
+        divCollapse.classList.add("editor-button-collapse");
 
         this.collapseButton = document.createElement("button");
 
@@ -59,11 +59,11 @@ export class EditorContainer extends EditorItem {
 
         this.element.append(divTitle);
 
-        this.childrenContainer = document.createElement("div");
+        this.childrenGroup = document.createElement("div");
 
-        this.childrenContainer.classList.add("container-content");
+        this.childrenGroup.classList.add("group-content");
 
-        this.element.append(this.childrenContainer);
+        this.element.append(this.childrenGroup);
 
         parent.append(this.element);
 
@@ -74,8 +74,8 @@ export class EditorContainer extends EditorItem {
         return document.createElement("div");
     }
 
-    public addContainer(name: string, title: string, collapsed = true): EditorContainer {
-        return new EditorContainer(this.data, `${this.name}_${name}`, title, collapsed, this.childrenContainer);
+    public addGroup(name: string, title: string, collapsed = true): EditorGroup {
+        return new EditorGroup(this.data, `${this.name}_${name}`, title, collapsed, this.childrenGroup);
     }
 
     public addProperty(
@@ -85,15 +85,15 @@ export class EditorContainer extends EditorItem {
         type: string,
         change: (value: number | string | boolean) => void
     ): EditorItem {
-        const divContainer = document.createElement("div");
+        const divGroup = document.createElement("div");
 
-        divContainer.classList.add("element");
+        divGroup.classList.add("editor-element");
 
         const htmlLabel = document.createElement("label");
 
         htmlLabel.textContent = label;
 
-        divContainer.append(htmlLabel);
+        divGroup.append(htmlLabel);
 
         let item: EditorItem;
         const inputName = `${this.name}_${name}`;
@@ -121,9 +121,9 @@ export class EditorContainer extends EditorItem {
             (item.element as HTMLInputElement).value = "";
         }
 
-        divContainer.append(item.element);
+        divGroup.append(item.element);
 
-        this.childrenContainer.append(divContainer);
+        this.childrenGroup.append(divGroup);
 
         return item;
     }
@@ -131,14 +131,14 @@ export class EditorContainer extends EditorItem {
     public addButton(name: string, label: string, click: () => void): void {
         const button = new EditorButton(this.data, `${this.name}_${name}`, label, click);
 
-        this.childrenContainer.append(button.element);
+        this.childrenGroup.append(button.element);
     }
 
     private setCollapse(): void {
         if (this.collapsed) {
-            this.childrenContainer.style.display = "none";
+            this.childrenGroup.style.display = "none";
         } else {
-            this.childrenContainer.style.display = "block";
+            this.childrenGroup.style.display = "block";
         }
 
         if (this.collapsed) {

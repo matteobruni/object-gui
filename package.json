@@ -30,6 +30,7 @@
     "url": "git+https://github.com/matteobruni/object-gui.git"
   },
   "scripts": {
+    "start": "yarn build && yarn build:demo && node ./demo/app.js",
     "prettify:src": "prettier --write ./src/",
     "prettify:readme": "prettier --write ./README.md",
     "lint": "eslint src/ts --ext .js,.jsx,.ts,.tsx --fix",
@@ -38,6 +39,9 @@
     "build:ts": "tsc",
     "build:css": "sass src/scss/editor.scss dist/css/object-gui.css",
     "build": "yarn clear:dist && yarn build:css && yarn prettify:src && yarn build:ts:es && yarn lint && webpack -p && yarn build:ts && yarn prettify:readme",
+    "build:demo": "yarn build:demo:style && yarn build:demo:index",
+    "build:demo:index": "npx pug ./demo/views/index.pug",
+    "build:demo:style": "npx stylus ./demo/public/stylesheets/main.styl",
     "prepare": "yarn build"
   },
   "bugs": {
@@ -62,6 +66,11 @@
     "typescript": "^3.9.7",
     "webpack": "^4.44.1",
     "webpack-bundle-analyzer": "^3.8.0",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "express": "^4.17.1",
+    "helmet": "^4.0.0",
+    "pug": "^3.0.0",
+    "pug-cli": "^1.0.0-alpha6",
+    "stylus": "^0.54.8"
   }
 }

@@ -1,7 +1,7 @@
 export { EditorButton } from "./EditorButton";
 export { EditorCheckboxInput } from "./EditorCheckboxInput";
 export { EditorColorInput } from "./EditorColorInput";
-export { EditorContainer } from "./EditorContainer";
+export { EditorGroup } from "./EditorGroup";
 export { EditorItem } from "./EditorItem";
 export { EditorNumberInput } from "./EditorNumberInput";
 export { EditorSelectInput } from "./EditorSelectInput";

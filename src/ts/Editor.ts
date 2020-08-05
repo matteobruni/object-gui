@@ -1,42 +1,42 @@
-import { EditorContainer } from "./Editors";
+import { EditorGroup } from "./Editors";
 
 export class Editor {
-    public readonly container: EditorContainer;
+    public readonly root: EditorGroup;
 
     constructor(id: string, name: string, data: unknown) {
-        this.container = new EditorContainer(data, `${id}_editor`, `${name} Editor`, false, document.body);
+        this.root = new EditorGroup(data, `${id}_editor`, `${name} Editor`, false, document.body);
 
-        this.container.element.classList.add("editor-root");
+        this.root.element.classList.add("editor-root");
 
         this.customize();
     }
 
     public top(): Editor {
-        this.container.element.classList.add("top");
+        this.root.element.classList.add("editor-top");
 
         return this;
     }
 
     public bottom(): Editor {
-        this.container.element.classList.add("bottom");
+        this.root.element.classList.add("editor-bottom");
 
         return this;
     }
 
     public left(): Editor {
-        this.container.element.classList.add("left");
+        this.root.element.classList.add("editor-left");
 
         return this;
     }
 
     public right(): Editor {
-        this.container.element.classList.add("right");
+        this.root.element.classList.add("editor-right");
 
         return this;
     }
 
     public theme(theme: string): void {
-        this.container.element.classList.add(`editor-${theme}`);
+        this.root.element.classList.add(`editor-${theme}`);
     }
 
     protected customize(): void {

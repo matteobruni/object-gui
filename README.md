@@ -46,7 +46,7 @@ var editor = new Editor("sample", "Sample", data);
 
 editor.theme("light");
 
-var group1 = editor.container.addContainer("group1", "Group 1", false);
+var group1 = editor.root.addGroup("group1", "Group 1", false);
 
 group1.addProperty("group1_prop1", "Property 1", data.group1.prop1, "string", (value) => {
   data.group1.prop1 = value;
@@ -54,13 +54,13 @@ group1.addProperty("group1_prop1", "Property 1", data.group1.prop1, "string", (v
   console.log(data);
 });
 
-editor.container.addProperty("prop1", "Property 1", data.prop1, "string", (value) => {
+editor.root.addProperty("prop1", "Property 1", data.prop1, "string", (value) => {
   data.prop1 = value;
 
   console.log(data);
 });
 
-editor.container.addButton("alert", "Alert", () => {
+editor.root.addButton("alert", "Alert", () => {
   alert(JSON.stringify(data));
 });
 ```

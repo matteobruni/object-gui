@@ -1,6 +1,6 @@
 @use "utils/theme";
 
-.container {
+.editor-group {
   border-radius: 0.25rem;
   margin: 5px 0;
 
@@ -8,39 +8,49 @@
     padding: 0.25em;
   }
 
-  .element,
-  .title {
+  .editor-element,
+  .editor-title {
     display: flex;
   }
 
-  .title {
+  .editor-element {
+    margin-bottom: 0.25rem;
+  }
+
+  .editor-item-title {
     background-color: rgba(0, 0, 0, 0.03);
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    display: flex;
 
-    .name {
+    .editor-item-name {
       padding: 0.25rem;
       margin-bottom: 0;
       line-height: 1.5;
       font-weight: 500;
+      flex: 100%;
     }
   }
 
   input,
   select,
   label,
-  .name,
-  .collapse {
+  .editor-item-name,
+  .editor-button-collapse {
     flex: 1;
   }
 
   label {
     line-height: 1.5;
+    padding-top: 0.25rem;
   }
 
-  input:not([type="button"]),
+  input:not([type="button"]):not([type="checkbox"]),
   select {
     padding: 0.25rem;
     border-radius: 0.25rem;
+    height: calc(1rem + 2px);
+    font-size: 1rem;
+    width: 100%;
   }
 
   input[type="checkbox"] {
@@ -55,12 +65,13 @@
     border-radius: 0.25rem;
   }
 
-  .collapse {
-    text-align: right;
+  .editor-button-collapse {
+    text-align: center;
+    flex: auto;
   }
 }
 
-.container-content {
+.group-content {
   padding: 0.5em;
 }
 
@@ -74,19 +85,19 @@
   font-family: "Avenir Next", Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-.top {
+.editor-top {
   top: 0;
 }
 
-.bottom {
+.editor-bottom {
   bottom: 0;
 }
 
-.left {
+.editor-left {
   left: 0;
 }
 
-.right {
+.editor-right {
   right: 0;
 }
 
