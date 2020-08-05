@@ -109,11 +109,17 @@ export class EditorNumberInput extends EditorItem {
 
         const dragger = slider.children[0] as HTMLElement;
 
-        let down = false;
-        let rangeWidth: number;
-        let rangeLeft: number;
+        const rect = slider.getBoundingClientRect();
 
-        dragger.style.width = `${this.value}px`;
+        let rangeLeft = rect.left;
+        let rangeWidth = slider.offsetWidth;
+        let down = false;
+        const max = this._max ?? 0;
+        const min = this._min ?? 0;
+        const denom = Math.abs(max) + Math.abs(min);
+        const width = denom !== 0 ? this.value / denom : 0;
+
+        dragger.style.width = `${width * rangeWidth}px`;
         dragger.style.left = "0px";
         dragger.style.marginLeft = "0px";
 
@@ -122,11 +128,6 @@ export class EditorNumberInput extends EditorItem {
                 return;
             }
 
-            const elem = e.target as HTMLElement;
-            const rect = elem.getBoundingClientRect();
-
-            rangeLeft = rect.left;
-            rangeWidth = elem.offsetWidth;
             down = true;
 
             this.updateDragger(e as MouseEvent, down, rangeLeft, rangeWidth, dragger);
@@ -140,6 +141,23 @@ export class EditorNumberInput extends EditorItem {
 
         document.addEventListener("mouseup", () => {
             down = false;
+        });
+
+        window.addEventListener("resize", () => {
+            console.log("resize");
+            const rect = slider.getBoundingClientRect();
+
+            rangeLeft = rect.left;
+            rangeWidth = slider.offsetWidth;
+
+            const max = this._max ?? 0;
+            const min = this._min ?? 0;
+            const denom = Math.abs(max) + Math.abs(min);
+            const width = denom !== 0 ? this.value / denom : 0;
+
+            dragger.style.width = `${width * rangeWidth}px`;
+            dragger.style.left = "0px";
+            dragger.style.marginLeft = "0px";
         });
     }
 }

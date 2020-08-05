@@ -2,7 +2,7 @@ var code = document.getElementById("code");
 
 var data = {
     prop1: "pluto",
-    prop2: 0,
+    prop2: 3,
     group1: {
         prop1: "paperino"
     },
