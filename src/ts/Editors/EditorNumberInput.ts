@@ -4,6 +4,10 @@ export class EditorNumberInput extends EditorItem {
     private _max?: number;
     private _min?: number;
     private _step?: number;
+    private slider?: {
+        left: number;
+        width: number;
+    };
 
     constructor(
         data: unknown,
@@ -84,28 +88,34 @@ export class EditorNumberInput extends EditorItem {
             return;
         }
 
-        const rangeWidth = range.offsetWidth;
+        const rect = range.getBoundingClientRect();
+
+        this.slider = {
+            left: rect.left,
+            width: rect.width,
+        };
+
         const max = this._max ?? 0;
         const min = this._min ?? 0;
         const denom = Math.abs(max) + Math.abs(min);
         const width = denom !== 0 ? this.value / denom : 0;
 
-        dragger.style.width = `${width * rangeWidth}px`;
+        dragger.style.width = `${width * this.slider.width}px`;
         dragger.style.left = "0px";
         dragger.style.marginLeft = "0px";
     }
 
     private updateDragger(e: MouseEvent, down: boolean, dragger: HTMLElement) {
-        const elem = e.target as HTMLElement;
-        const rect = elem.getBoundingClientRect();
-        const rangeLeft = rect.left;
-        const rangeWidth = elem.offsetWidth;
+        if (!this.slider) {
+            return;
+        }
 
-        if (down && e.pageX >= rangeLeft && e.pageX <= rangeLeft + rangeWidth) {
+        if (down && e.pageX >= this.slider.left && e.pageX <= this.slider.left + this.slider.width) {
             const max = this._max ?? 0;
             const min = this._min ?? 0;
-            const width = e.pageX - rangeLeft;
-            const value = (width / rangeWidth) * (max - min) + min;
+            const width = e.pageX - this.slider.left;
+
+            const value = (width / this.slider.width) * (max - min) + min;
 
             dragger.style.width = `${width}px`;
 
@@ -148,16 +158,22 @@ export class EditorNumberInput extends EditorItem {
 
         parent.insertBefore(slider, this.element);
 
+        const rect = slider.getBoundingClientRect();
+
+        this.slider = {
+            left: rect.left,
+            width: rect.width,
+        };
+
         const dragger = slider.children[0] as HTMLElement;
 
         let down = false;
-        const rangeWidth = slider.offsetWidth;
         const max = this._max ?? 0;
         const min = this._min ?? 0;
         const denom = Math.abs(max) + Math.abs(min);
         const width = denom !== 0 ? this.value / denom : 0;
 
-        dragger.style.width = `${width * rangeWidth}px`;
+        dragger.style.width = `${width * this.slider.width}px`;
         dragger.style.left = "0px";
         dragger.style.marginLeft = "0px";
 
@@ -182,13 +198,14 @@ export class EditorNumberInput extends EditorItem {
         });
 
         window.addEventListener("resize", () => {
-            const rangeWidth = slider.offsetWidth;
-            const max = this._max ?? 0;
-            const min = this._min ?? 0;
-            const denom = Math.abs(max) + Math.abs(min);
-            const width = denom !== 0 ? this.value / denom : 0;
+            const rect = slider.getBoundingClientRect();
 
-            dragger.style.width = `${width * rangeWidth}px`;
+            this.slider = {
+                left: rect.left,
+                width: rect.width,
+            };
+
+            dragger.style.width = `${width * this.slider.width}px`;
             dragger.style.left = "0px";
             dragger.style.marginLeft = "0px";
         });

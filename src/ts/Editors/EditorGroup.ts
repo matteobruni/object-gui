@@ -183,8 +183,10 @@ export class EditorGroup extends EditorItem {
             this.collapseButton.textContent = "Collapse";
         }
 
-        for (const child of this.children) {
-            child.updateCollapse(this.collapsed);
+        if (!this.collapsed) {
+            for (const child of this.children) {
+                child.updateCollapse(this.collapsed);
+            }
         }
     }
 }
