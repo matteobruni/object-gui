@@ -9,8 +9,8 @@
 
     input:not([type="button"]),
     select {
-      color: #000;
-      background-color: #fff;
+      color: $textColor;
+      background-color: $bgColor;
       border: 1px solid $borderColor;
     }
 
@@ -31,6 +31,18 @@
 
     .group-content {
       border-top: 1px solid $borderColor;
+    }
+
+    .range-slider {
+      border: 1px solid $borderColor;
+
+      &:before {
+        background-color: $bgColor;
+      }
+
+      span {
+        background-color: $textColor;
+      }
     }
   }
 }
