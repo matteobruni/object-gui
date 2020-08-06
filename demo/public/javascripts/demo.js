@@ -7,7 +7,8 @@ var data = {
     prop1: "paperino",
     prop2: 0.3
   },
-  color1: "#ff0000"
+  color1: "#ff0000",
+  select1: "Item 1"
 };
 var editor = new Editor("sample", "Sample", data);
 
@@ -78,6 +79,19 @@ editor.root.addProperty("color1", "Color 1", data.color1, "color", (value) => {
 
   console.log(data);
 });
+
+const select1Input = editor.root.addProperty("select1", "Select 1", data.select1, "select", (value) => {
+  data.select1 = value;
+  code.innerText = JSON.stringify(data, null, 4);
+
+  console.log(data);
+});
+
+console.log(select1Input);
+
+select1Input.addItem("Item 1");
+select1Input.addItem("Item 2");
+select1Input.addItem("Item 3");
 
 editor.root.addButton("alert", "Alert", () => {
   alert(JSON.stringify(data, null, 4));
