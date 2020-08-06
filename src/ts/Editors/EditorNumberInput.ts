@@ -151,8 +151,13 @@ export class EditorNumberInput extends EditorItem {
 
         const max = this._max ?? 0;
         const min = this._min ?? 0;
+        const step = this._step ?? 0;
         const width = Utils.clamp(e.pageX - this.slider.left, 0, this.slider.width);
-        const value = Utils.clamp((width / this.slider.width) * (max - min) + min, min, max);
+        let value = Utils.clamp((width / this.slider.width) * (max - min) + min, min, max);
+
+        if (step > 0) {
+            value = Math.floor(value / step) * step;
+        }
 
         dragger.style.width = `${width}px`;
 
@@ -185,6 +190,8 @@ export class EditorNumberInput extends EditorItem {
         if (range) {
             return;
         }
+
+        (this.element as HTMLInputElement).classList.add("slider-input");
 
         const slider = document.createElement("div");
 

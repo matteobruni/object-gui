@@ -4,6 +4,7 @@ export class Editor {
     public readonly root: EditorGroup;
     private readonly themeSelect: HTMLSelectElement;
     private currentTheme?: string;
+    private themes: string[];
 
     constructor(id: string, name: string, data: unknown) {
         this.themeSelect = document.createElement("select");
@@ -12,7 +13,13 @@ export class Editor {
             this.theme(this.themeSelect.value);
         });
 
-        this.updateThemes();
+        this.themes = [];
+
+        this.addTheme("blue");
+        this.addTheme("dark");
+        this.addTheme("green");
+        this.addTheme("light");
+        this.addTheme("red");
 
         this.root = EditorGroup.createRoot(`${id}_editor`, `${name} Editor`, data, document.body, this.themeSelect);
 
@@ -77,25 +84,17 @@ export class Editor {
         this.currentTheme = theme;
     }
 
-    protected customize(): void {
-        // override this method to add properties
+    public addTheme(theme: string): void {
+        const option = document.createElement("option");
+
+        option.value = theme;
+        option.text = theme;
+        option.selected = theme === this.themeSelect.value;
+
+        this.themeSelect.options.add(option);
     }
 
-    protected updateThemes(): void {
-        const themes = ["blue", "dark", "green", "light", "red"];
-
-        while (this.themeSelect.firstChild) {
-            this.themeSelect.removeChild(this.themeSelect.firstChild);
-        }
-
-        for (const theme of themes) {
-            const option = document.createElement("option");
-
-            option.value = theme;
-            option.text = theme;
-            option.selected = theme === this.themeSelect.value;
-
-            this.themeSelect.options.add(option);
-        }
+    protected customize(): void {
+        // override this method to add properties
     }
 }
