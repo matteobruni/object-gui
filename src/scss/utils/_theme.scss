@@ -1,4 +1,15 @@
-@mixin create-theme($name, $bgColor, $textColor, $borderColor) {
+@mixin create-theme(
+  $name,
+  $bgColor,
+  $textColor,
+  $borderColor,
+  $titleBgColor,
+  $titleTextColor,
+  $sliderBgColor,
+  $buttonBgColor,
+  $buttonTextColor,
+  $buttonHoverBgColor
+) {
   .editor-root.editor-theme-#{$name} {
     border: 1px solid $borderColor;
   }
@@ -6,6 +17,12 @@
   .editor-theme-#{$name} {
     color: $textColor;
     background-color: $bgColor;
+
+    .editor-item-title {
+      background-color: $titleBgColor;
+      border-bottom: 1px solid $borderColor;
+      color: $titleTextColor;
+    }
 
     input:not([type="button"]),
     select {
@@ -16,12 +33,12 @@
 
     button,
     input[type="button"] {
-      color: $textColor;
-      background-color: $bgColor;
+      color: $buttonTextColor;
+      background-color: $buttonBgColor;
       border: 1px solid $borderColor;
 
       &:hover {
-        background-color: darken($bgColor, 10%);
+        background-color: $buttonHoverBgColor;
       }
     }
 
@@ -29,19 +46,16 @@
       border: 1px solid $borderColor;
     }
 
-    .group-content {
-      border-top: 1px solid $borderColor;
-    }
-
     .range-slider {
       border: 1px solid $borderColor;
+      background-color: $bgColor;
 
       &:before {
         background-color: $bgColor;
       }
 
       span {
-        background-color: $textColor;
+        background-color: $sliderBgColor;
       }
     }
   }

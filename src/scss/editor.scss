@@ -1,4 +1,8 @@
-@use "utils/theme";
+@use "themes/_blue";
+@use "themes/_dark";
+@use "themes/_green";
+@use "themes/_light";
+@use "themes/_red";
 
 .editor-group {
   border-radius: 0.25rem;
@@ -18,8 +22,6 @@
   }
 
   .editor-item-title {
-    background-color: rgba(0, 0, 0, 0.03);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
     display: flex;
 
     .editor-item-name {
@@ -170,9 +172,3 @@
 .editor-right {
   right: 0;
 }
-
-@include theme.create-theme("light", #fff, #000, #000);
-@include theme.create-theme("dark", #333, #fff, #fff);
-@include theme.create-theme("red", #dc3545, #fff, rgba(0, 0, 0, 0.125));
-@include theme.create-theme("blue", #007bff, #fff, rgba(0, 0, 0, 0.125));
-@include theme.create-theme("green", #28a745, #fff, rgba(0, 0, 0, 0.125));

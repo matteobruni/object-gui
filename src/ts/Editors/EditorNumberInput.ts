@@ -1,4 +1,5 @@
 import { EditorItem } from "./EditorItem";
+import { Utils } from "../Utils";
 
 export class EditorNumberInput extends EditorItem {
     private _max?: number;
@@ -25,9 +26,29 @@ export class EditorNumberInput extends EditorItem {
         input.type = "number";
 
         input.addEventListener("change", () => {
-            this.value = parseFloat((this.element as HTMLInputElement).value);
+            const value = parseFloat((this.element as HTMLInputElement).value);
+
+            this.value = Utils.clamp(value, this._min ?? value, this._max ?? value);
+
+            if (value !== this.value) {
+                (this.element as HTMLInputElement).value = this.value.toString(10);
+            }
 
             this.change(this.value);
+
+            const slider = this.getSlider();
+
+            if (!slider) {
+                return;
+            }
+
+            const dragger = this.getDragger(slider);
+
+            if (!dragger) {
+                return;
+            }
+
+            this.updateDragger(dragger);
         });
     }
 
@@ -66,34 +87,54 @@ export class EditorNumberInput extends EditorItem {
     public updateCollapse(collapsed: boolean): void {
         super.updateCollapse(collapsed);
 
-        if (this._max === undefined || this._min === undefined) {
+        const slider = this.getSlider();
+
+        if (!slider) {
             return;
         }
 
-        const parent = this.element.parentElement;
+        this.updateSliderData(slider);
 
-        if (!parent) {
-            return;
-        }
-
-        const range = parent.querySelector(".range-slider") as HTMLElement;
-
-        if (!range) {
-            return;
-        }
-
-        const dragger = range.querySelector("span") as HTMLElement;
+        const dragger = this.getDragger(slider);
 
         if (!dragger) {
             return;
         }
 
-        const rect = range.getBoundingClientRect();
+        this.updateDragger(dragger);
+    }
+
+    private getSlider(): HTMLElement | null {
+        if (this._max === undefined || this._min === undefined) {
+            return null;
+        }
+
+        const parent = this.element.parentElement;
+
+        if (!parent) {
+            return null;
+        }
+
+        return parent.querySelector(".range-slider") as HTMLElement | null;
+    }
+
+    private updateSliderData(slider: HTMLElement): void {
+        const rect = slider.getBoundingClientRect();
 
         this.slider = {
             left: rect.left,
             width: rect.width,
         };
+    }
+
+    private getDragger(slider: HTMLElement): HTMLElement | null {
+        return slider.querySelector("span") as HTMLElement | null;
+    }
+
+    private updateDragger(dragger: HTMLElement): void {
+        if (!this.slider) {
+            return;
+        }
 
         const max = this._max ?? 0;
         const min = this._min ?? 0;
@@ -101,26 +142,21 @@ export class EditorNumberInput extends EditorItem {
         const width = denom !== 0 ? this.value / denom : 0;
 
         dragger.style.width = `${width * this.slider.width}px`;
-        dragger.style.left = "0px";
-        dragger.style.marginLeft = "0px";
     }
 
-    private updateDragger(e: MouseEvent, down: boolean, dragger: HTMLElement) {
-        if (!this.slider) {
+    private updateDraggerEvent(e: MouseEvent, down: boolean, dragger: HTMLElement) {
+        if (!this.slider || !down) {
             return;
         }
 
-        if (down && e.pageX >= this.slider.left && e.pageX <= this.slider.left + this.slider.width) {
-            const max = this._max ?? 0;
-            const min = this._min ?? 0;
-            const width = e.pageX - this.slider.left;
+        const max = this._max ?? 0;
+        const min = this._min ?? 0;
+        const width = Utils.clamp(e.pageX - this.slider.left, 0, this.slider.width);
+        const value = Utils.clamp((width / this.slider.width) * (max - min) + min, min, max);
 
-            const value = (width / this.slider.width) * (max - min) + min;
+        dragger.style.width = `${width}px`;
 
-            dragger.style.width = `${width}px`;
-
-            this.onDrag(value);
-        }
+        this.onDrag(value);
     }
 
     private onDrag(value: number): void {
@@ -184,13 +220,13 @@ export class EditorNumberInput extends EditorItem {
 
             down = true;
 
-            this.updateDragger(e as MouseEvent, down, dragger);
+            this.updateDraggerEvent(e as MouseEvent, down, dragger);
 
             return false;
         });
 
         document.addEventListener("mousemove", (e) => {
-            this.updateDragger(e, down, dragger);
+            this.updateDraggerEvent(e, down, dragger);
         });
 
         document.addEventListener("mouseup", () => {

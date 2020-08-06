@@ -87,8 +87,6 @@ const select1Input = editor.root.addProperty("select1", "Select 1", data.select1
   console.log(data);
 });
 
-console.log(select1Input);
-
 select1Input.addItem("Item 1");
 select1Input.addItem("Item 2");
 select1Input.addItem("Item 3");
