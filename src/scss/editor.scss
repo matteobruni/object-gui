@@ -38,6 +38,11 @@
 
   .editor-button-collapse {
     flex: 1;
+
+    button {
+      margin: 2px;
+      height: calc(1.5rem + 2px);
+    }
   }
 
   .editor-button-theme {
@@ -47,7 +52,7 @@
     select {
       min-width: 80px;
       margin: 2px;
-      height: calc(1.5rem + 3px);
+      height: calc(1.5rem + 2px);
       font-size: 11px;
     }
   }
