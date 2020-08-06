@@ -12,16 +12,17 @@ export class EditorNumberInput extends EditorItem {
 
     constructor(
         data: unknown,
+        private readonly id: string,
         private readonly name: string,
-        private readonly label: string,
         private value: number,
-        private readonly change: (value: number) => void
+        private readonly change: (value: number) => void,
+        autoSet = true
     ) {
         super(data);
 
         const input = this.element as HTMLInputElement;
 
-        input.id = `input_${this.name}`;
+        input.id = `input_${this.id}`;
         input.value = value?.toString();
         input.type = "number";
 
@@ -32,6 +33,14 @@ export class EditorNumberInput extends EditorItem {
 
             if (value !== this.value) {
                 (this.element as HTMLInputElement).value = this.value.toString(10);
+            }
+
+            if (autoSet) {
+                const obj = data as Record<string, number>;
+
+                if (Object.prototype.hasOwnProperty.call(obj, name)) {
+                    obj[name] = this.value;
+                }
             }
 
             this.change(this.value);

@@ -18,12 +18,11 @@ editor.theme("light");
 var group1 = editor.root.addGroup("group1", "Group 1", true);
 
 group1.addProperty(
-  "group1_prop1",
+  "prop1",
   "Property 1",
   data.group1.prop1,
   "string",
   (value) => {
-    data.group1.prop1 = value;
     code.innerText = JSON.stringify(data, null, 4);
 
     console.log(data);
@@ -36,7 +35,6 @@ const group1prop2Input = group1.addProperty(
   data.group1.prop2,
   "number",
   (value) => {
-    data.group1.prop2 = value;
     code.innerText = JSON.stringify(data, null, 4);
 
     console.log(data);
@@ -51,7 +49,6 @@ editor.root.addProperty(
   data.prop1,
   "string",
   (value) => {
-    data.prop1 = value;
     code.innerText = JSON.stringify(data, null, 4);
 
     console.log(data);
@@ -64,7 +61,6 @@ const prop2Input = editor.root.addProperty(
   data.prop2,
   "number",
   (value) => {
-    data.prop2 = value;
     code.innerText = JSON.stringify(data, null, 4);
 
     console.log(data);

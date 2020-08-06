@@ -22,6 +22,8 @@ export class EditorGroup extends EditorItem {
     ) {
         super(data);
 
+        console.log(data);
+
         this.collapsed = collapsed;
         this.children = [];
 
@@ -93,7 +95,13 @@ export class EditorGroup extends EditorItem {
     }
 
     public addGroup(name: string, title: string, collapsed = true): EditorGroup {
-        const subGroup = new EditorGroup(this.data, `${this.name}_${name}`, title, this.childrenGroup, collapsed);
+        let data = this.data;
+
+        if (Object.prototype.hasOwnProperty.call(data, name)) {
+            data = (data as Record<string, unknown>)[name];
+        }
+
+        const subGroup = new EditorGroup(data, `${this.name}_${name}`, title, this.childrenGroup, collapsed);
 
         this.children.push(subGroup);
 
@@ -105,7 +113,8 @@ export class EditorGroup extends EditorItem {
         label: string,
         value: SingleOrMultiple<number | string | boolean | undefined | null>,
         type: string,
-        change: (value: number | string | boolean) => void
+        change: (value: number | string | boolean) => void,
+        autoSet = true
     ): EditorItem {
         const divGroup = document.createElement("div");
 
@@ -122,21 +131,19 @@ export class EditorGroup extends EditorItem {
 
         switch (type) {
             case "number":
-                item = new EditorNumberInput(this.data, inputName, label, value as number, change);
+                item = new EditorNumberInput(this.data, inputName, name, value as number, change, autoSet);
                 break;
             case "boolean":
-                item = new EditorCheckboxInput(this.data, inputName, label, value as boolean, change);
+                item = new EditorCheckboxInput(this.data, inputName, name, value as boolean, change, autoSet);
                 break;
             case "color":
-                item = new EditorColorInput(this.data, inputName, label, value as string, change);
+                item = new EditorColorInput(this.data, inputName, name, value as string, change, autoSet);
                 break;
-            // case "range":
-            //    break;
             case "select":
-                item = new EditorSelectInput(this.data, inputName, label, value as string, change);
+                item = new EditorSelectInput(this.data, inputName, name, value as string, change, autoSet);
                 break;
             default:
-                item = new EditorStringInput(this.data, inputName, label, value as string, change);
+                item = new EditorStringInput(this.data, inputName, name, value as string, change, autoSet);
         }
 
         this.children.push(item);
@@ -153,7 +160,7 @@ export class EditorGroup extends EditorItem {
     }
 
     public addButton(name: string, label: string, click: () => void): void {
-        const button = new EditorButton(this.data, `${this.name}_${name}`, label, click);
+        const button = new EditorButton(this.data, `${this.name}_${name}`, name, label, click);
 
         this.children.push(button);
 

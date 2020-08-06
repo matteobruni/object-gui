@@ -4,16 +4,17 @@ import { ColorUtils } from "../Utils/ColorUtils";
 export class EditorColorInput extends EditorItem {
     constructor(
         data: unknown,
+        private readonly id: string,
         private readonly name: string,
-        private readonly label: string,
         private value: string,
-        private readonly change: (value: string) => void
+        private readonly change: (value: string) => void,
+        autoSet = true
     ) {
         super(data);
 
         const input = this.element as HTMLInputElement;
 
-        input.id = `input_${this.name}`;
+        input.id = `input_${this.id}`;
         input.value = this.value;
         input.type = "color";
 
@@ -21,6 +22,14 @@ export class EditorColorInput extends EditorItem {
 
         input.addEventListener("change", () => {
             this.value = (this.element as HTMLInputElement).value;
+
+            if (autoSet) {
+                const obj = data as Record<string, string>;
+
+                if (Object.prototype.hasOwnProperty.call(obj, name)) {
+                    obj[name] = this.value;
+                }
+            }
 
             this.change(this.value);
 
