@@ -111,7 +111,7 @@ export class EditorGroup extends EditorItem {
         label: string,
         value: SingleOrMultiple<number | string | boolean | undefined | null>,
         type: string,
-        change: (value: number | string | boolean) => void,
+        change?: (value: number | string | boolean) => void,
         autoSet = true
     ): EditorItem {
         const divGroup = document.createElement("div");
@@ -157,8 +157,8 @@ export class EditorGroup extends EditorItem {
         return item;
     }
 
-    public addButton(name: string, label: string, click: () => void): void {
-        const button = new EditorButton(this.data, `${this.name}_${name}`, name, label, click);
+    public addButton(name: string, label: string, click?: () => void, autoCall = true): void {
+        const button = new EditorButton(this.data, `${this.name}_${name}`, name, label, click, autoCall);
 
         this.children.push(button);
 
