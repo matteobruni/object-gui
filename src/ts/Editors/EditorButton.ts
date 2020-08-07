@@ -15,12 +15,10 @@ export class EditorButton extends EditorItem {
         this.element.innerText = label;
         this.element.addEventListener("click", () => {
             if (autoCall) {
-                if (Object.prototype.hasOwnProperty.call(data, name)) {
-                    const func = (data as Record<string, unknown>)[name];
+                const func = (data as Record<string, unknown>)[name];
 
-                    if (typeof func === "function") {
-                        func();
-                    }
+                if (typeof func === "function") {
+                    func();
                 }
             }
 

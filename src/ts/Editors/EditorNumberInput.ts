@@ -95,9 +95,7 @@ export class EditorNumberInput extends EditorItem {
         if (this.autoSet) {
             const obj = this.data as Record<string, number>;
 
-            if (Object.prototype.hasOwnProperty.call(obj, this.name)) {
-                obj[this.name] = this.value;
-            }
+            obj[this.name] = this.value;
         }
 
         if (this.change) {

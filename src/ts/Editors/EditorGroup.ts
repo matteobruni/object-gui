@@ -95,9 +95,7 @@ export class EditorGroup extends EditorItem {
     public addGroup(name: string, title: string, collapsed = true): EditorGroup {
         let data = this.data;
 
-        if (Object.prototype.hasOwnProperty.call(data, name)) {
-            data = (data as Record<string, unknown>)[name];
-        }
+        data = (data as Record<string, unknown>)[name];
 
         const subGroup = new EditorGroup(data, `${this.name}_${name}`, title, this.childrenGroup, collapsed);
 

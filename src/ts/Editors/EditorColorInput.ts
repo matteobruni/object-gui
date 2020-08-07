@@ -26,9 +26,7 @@ export class EditorColorInput extends EditorItem {
             if (autoSet) {
                 const obj = data as Record<string, string>;
 
-                if (Object.prototype.hasOwnProperty.call(obj, name)) {
-                    obj[name] = this.value;
-                }
+                obj[name] = this.value;
             }
 
             if (change) {
