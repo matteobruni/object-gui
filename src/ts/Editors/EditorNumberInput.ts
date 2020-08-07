@@ -15,8 +15,8 @@ export class EditorNumberInput extends EditorItem {
         private readonly id: string,
         private readonly name: string,
         private value: number,
-        private readonly change: (value: number) => void,
-        autoSet = true
+        private readonly change?: (value: number) => void,
+        private readonly autoSet = true
     ) {
         super(data);
 
@@ -29,40 +29,8 @@ export class EditorNumberInput extends EditorItem {
         input.addEventListener("change", () => {
             const value = parseFloat((this.element as HTMLInputElement).value);
 
-            this.value = Utils.clamp(value, this._min ?? value, this._max ?? value);
-
-            if (value !== this.value) {
-                (this.element as HTMLInputElement).value = this.value.toString(10);
-            }
-
-            if (autoSet) {
-                const obj = data as Record<string, number>;
-
-                if (Object.prototype.hasOwnProperty.call(obj, name)) {
-                    obj[name] = this.value;
-                }
-            }
-
-            this.change(this.value);
-
-            const slider = this.getSlider();
-
-            if (!slider) {
-                return;
-            }
-
-            const dragger = this.getDragger(slider);
-
-            if (!dragger) {
-                return;
-            }
-
-            this.updateDragger(dragger);
+            this.handleChange(value);
         });
-    }
-
-    protected createElement(): HTMLElement {
-        return document.createElement("input");
     }
 
     public step(step: number): EditorNumberInput {
@@ -113,6 +81,44 @@ export class EditorNumberInput extends EditorItem {
         this.updateDragger(dragger);
     }
 
+    protected createElement(): HTMLElement {
+        return document.createElement("input");
+    }
+
+    private handleChange(value: number) {
+        this.value = Utils.clamp(value, this._min ?? value, this._max ?? value);
+
+        if (value !== this.value) {
+            (this.element as HTMLInputElement).value = this.value.toString(10);
+        }
+
+        if (this.autoSet) {
+            const obj = this.data as Record<string, number>;
+
+            if (Object.prototype.hasOwnProperty.call(obj, this.name)) {
+                obj[this.name] = this.value;
+            }
+        }
+
+        if (this.change) {
+            this.change(this.value);
+        }
+
+        const slider = this.getSlider();
+
+        if (!slider) {
+            return;
+        }
+
+        const dragger = this.getDragger(slider);
+
+        if (!dragger) {
+            return;
+        }
+
+        this.updateDragger(dragger);
+    }
+
     private getSlider(): HTMLElement | null {
         if (this._max === undefined || this._min === undefined) {
             return null;
@@ -147,7 +153,7 @@ export class EditorNumberInput extends EditorItem {
 
         const max = this._max ?? 0;
         const min = this._min ?? 0;
-        const denom = Math.abs(max) + Math.abs(min);
+        const denom = max - min;
         const width = denom !== 0 ? this.value / denom : 0;
 
         dragger.style.width = `${width * this.slider.width}px`;
@@ -178,9 +184,7 @@ export class EditorNumberInput extends EditorItem {
 
         input.value = value.toString(10);
 
-        this.value = value;
-
-        this.change(this.value);
+        this.handleChange(value);
     }
 
     private drawSlider(): void {
@@ -257,9 +261,7 @@ export class EditorNumberInput extends EditorItem {
                 width: rect.width,
             };
 
-            dragger.style.width = `${width * this.slider.width}px`;
-            dragger.style.left = "0px";
-            dragger.style.marginLeft = "0px";
+            this.updateDragger(dragger);
         });
     }
 }

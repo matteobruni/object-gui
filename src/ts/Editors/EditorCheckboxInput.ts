@@ -6,8 +6,8 @@ export class EditorCheckboxInput extends EditorItem {
         private readonly id: string,
         private readonly name: string,
         private value: boolean,
-        private readonly change: (value: boolean) => void,
-        autoSet = true
+        private readonly change?: (value: boolean) => void,
+        private readonly autoSet = true
     ) {
         super(data);
 
@@ -28,7 +28,9 @@ export class EditorCheckboxInput extends EditorItem {
                 }
             }
 
-            this.change(this.value);
+            if (change) {
+                change(this.value);
+            }
         });
     }
 

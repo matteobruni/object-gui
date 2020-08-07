@@ -73,14 +73,12 @@ const prop2Input = editor.root.addProperty(
 prop2Input.min(0).max(10).step(0.5);
 
 editor.root.addProperty("color1", "Color 1", data.color1, "color", (value) => {
-  data.color1 = value;
   code.innerText = JSON.stringify(data, null, 4);
 
   console.log(data);
 });
 
 const select1Input = editor.root.addProperty("select1", "Select 1", data.select1, "select", (value) => {
-  data.select1 = value;
   code.innerText = JSON.stringify(data, null, 4);
 
   console.log(data);
@@ -90,9 +88,7 @@ select1Input.addItem("Item 1");
 select1Input.addItem("Item 2");
 select1Input.addItem("Item 3");
 
-editor.root.addButton("alert", "Alert", () => {
-
-});
+editor.root.addButton("alert", "Alert");
 
 code.innerText = JSON.stringify(data, null, 4);
 

@@ -7,8 +7,8 @@ export class EditorColorInput extends EditorItem {
         private readonly id: string,
         private readonly name: string,
         private value: string,
-        private readonly change: (value: string) => void,
-        autoSet = true
+        private readonly change?: (value: string) => void,
+        private readonly autoSet = true
     ) {
         super(data);
 
@@ -31,7 +31,9 @@ export class EditorColorInput extends EditorItem {
                 }
             }
 
-            this.change(this.value);
+            if (change) {
+                change(this.value);
+            }
 
             this.updateStyle(this.value);
         });

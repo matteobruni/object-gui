@@ -6,8 +6,8 @@ export class EditorButton extends EditorItem {
         private readonly id: string,
         private readonly name: string,
         private readonly label: string,
-        click: () => void,
-        autoCall = true
+        private readonly click?: () => void,
+        private readonly autoCall = true
     ) {
         super(data);
 
@@ -24,7 +24,9 @@ export class EditorButton extends EditorItem {
                 }
             }
 
-            click();
+            if (click) {
+                click();
+            }
         });
     }
 
