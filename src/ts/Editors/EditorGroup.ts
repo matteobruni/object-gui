@@ -22,8 +22,6 @@ export class EditorGroup extends EditorItem {
     ) {
         super(data);
 
-        console.log(data);
-
         this.collapsed = collapsed;
         this.children = [];
 

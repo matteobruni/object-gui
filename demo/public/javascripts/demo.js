@@ -8,7 +8,10 @@ var data = {
     prop2: 0.3
   },
   color1: "#ff0000",
-  select1: "Item 1"
+  select1: "Item 1",
+  alert: function () {
+    alert(JSON.stringify(data, null, 4));
+  }
 };
 var editor = new Editor("sample", "Sample", data);
 
@@ -88,7 +91,7 @@ select1Input.addItem("Item 2");
 select1Input.addItem("Item 3");
 
 editor.root.addButton("alert", "Alert", () => {
-  alert(JSON.stringify(data, null, 4));
+
 });
 
 code.innerText = JSON.stringify(data, null, 4);

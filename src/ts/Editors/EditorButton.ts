@@ -6,13 +6,26 @@ export class EditorButton extends EditorItem {
         private readonly id: string,
         private readonly name: string,
         private readonly label: string,
-        click: () => void
+        click: () => void,
+        autoCall = true
     ) {
         super(data);
 
         this.element.id = `button_${id}`;
         this.element.innerText = label;
-        this.element.addEventListener("click", () => click());
+        this.element.addEventListener("click", () => {
+            if (autoCall) {
+                if (Object.prototype.hasOwnProperty.call(data, name)) {
+                    const func = (data as Record<string, unknown>)[name];
+
+                    if (typeof func === "function") {
+                        func();
+                    }
+                }
+            }
+
+            click();
+        });
     }
 
     protected createElement(): HTMLElement {
