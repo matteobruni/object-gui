@@ -92,10 +92,12 @@ export class EditorGroup extends EditorItem {
         return new EditorGroup(data, `${this.name}_${name}`, title, parent, false, themeSelect);
     }
 
-    public addGroup(name: string, title: string, collapsed = true): EditorGroup {
-        let data = this.data;
+    public addGroup(name: string, title: string, customData?: unknown, collapsed = true): EditorGroup {
+        let data = customData ?? this.data;
 
-        data = (data as Record<string, unknown>)[name];
+        if (!customData) {
+            data = (data as Record<string, unknown>)[name];
+        }
 
         const subGroup = new EditorGroup(data, `${this.name}_${name}`, title, this.childrenGroup, collapsed);
 

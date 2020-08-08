@@ -18,14 +18,14 @@ var editor = new Editor("sample", "Sample", data);
 editor.top().right();
 editor.theme("light");
 
-var group1 = editor.root.addGroup("group1", "Group 1", true);
+var group1 = editor.root.addGroup("group1", "Group 1", undefined, true);
 
 group1.addProperty(
   "prop1",
   "Property 1",
   data.group1.prop1,
   "string",
-  (value) => {
+  () => {
     code.innerText = JSON.stringify(data, null, 4);
 
     console.log(data);
@@ -37,7 +37,7 @@ const group1prop2Input = group1.addProperty(
   "Property 2",
   data.group1.prop2,
   "number",
-  (value) => {
+  () => {
     code.innerText = JSON.stringify(data, null, 4);
 
     console.log(data);
@@ -51,7 +51,7 @@ editor.root.addProperty(
   "Property 1",
   data.prop1,
   "string",
-  (value) => {
+  () => {
     code.innerText = JSON.stringify(data, null, 4);
 
     console.log(data);
@@ -63,7 +63,7 @@ const prop2Input = editor.root.addProperty(
   "Property 2",
   data.prop2,
   "number",
-  (value) => {
+  () => {
     code.innerText = JSON.stringify(data, null, 4);
 
     console.log(data);
@@ -72,13 +72,13 @@ const prop2Input = editor.root.addProperty(
 
 prop2Input.min(0).max(10).step(0.5);
 
-editor.root.addProperty("color1", "Color 1", data.color1, "color", (value) => {
+editor.root.addProperty("color1", "Color 1", data.color1, "color", () => {
   code.innerText = JSON.stringify(data, null, 4);
 
   console.log(data);
 });
 
-const select1Input = editor.root.addProperty("select1", "Select 1", data.select1, "select", (value) => {
+const select1Input = editor.root.addProperty("select1", "Select 1", data.select1, "select", () => {
   code.innerText = JSON.stringify(data, null, 4);
 
   console.log(data);
