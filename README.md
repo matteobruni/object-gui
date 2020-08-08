@@ -48,7 +48,7 @@ var editor = new Editor("sample", "Sample", data);
 
 editor.theme("light");
 
-var group1 = editor.root.addGroup("group1", "Group 1", false);
+var group1 = editor.root.addGroup("group1", "Group 1", undefined, false); // The third parameter is a custom object if the first is not the right property to navigate
 
 group1.addProperty("group1_prop1", "Property 1", data.group1.prop1, "string", (value) => {
   data.group1.prop1 = value;
