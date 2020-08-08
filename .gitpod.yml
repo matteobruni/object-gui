@@ -1,0 +1,3 @@
+tasks:
+  - init: yarn && yarn build
+    command: yarn start
