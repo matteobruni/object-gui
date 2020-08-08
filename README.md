@@ -2,6 +2,8 @@
 
 Object GUI is your fully customizable Javascript Object GUI Editor
 
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/matteobruni/object-gui)
+
 ## Usage
 
 You can see a working sample here: <https://codepen.io/matteobruni/pen/oNxNvja>
