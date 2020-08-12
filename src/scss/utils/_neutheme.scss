@@ -37,7 +37,7 @@
       border-radius: 10px;
       height: 2rem;
       box-shadow: inset -6px -6px 16px 0 transparentize($lightColor, 0.5),
-      inset 6px 6px 16px 0 transparentize($shadowColor, 0.5);
+        inset 6px 6px 16px 0 transparentize($shadowColor, 0.5);
       border: none;
     }
 
@@ -47,7 +47,7 @@
       flex: 1;
       border-radius: 20px;
       box-shadow: -8px -4px 8px $lightColor, 8px 4px 12px $shadowColor, 4px 4px 4px $shadowColor inset,
-      -4px -4px 4px $lightColor inset;
+        -4px -4px 4px $lightColor inset;
       -webkit-appearance: none;
       position: relative;
 
@@ -97,7 +97,7 @@
 
       &:active {
         box-shadow: inset -6px -6px 16px 0 transparentize($lightColor, 0.5),
-        inset 6px 6px 16px 0 transparentize($shadowColor, 0.5);
+          inset 6px 6px 16px 0 transparentize($shadowColor, 0.5);
       }
     }
 
@@ -130,13 +130,13 @@
       background-color: $bgColor;
       border-radius: 20px;
       box-shadow: inset -6px -6px 16px 0 transparentize($lightColor, 0.5),
-      inset 6px 6px 16px 0 transparentize($shadowColor, 0.5);
+        inset 6px 6px 16px 0 transparentize($shadowColor, 0.5);
 
       &:before {
         background-color: $bgColor;
         border-radius: 20px;
         box-shadow: inset -6px -6px 16px 0 transparentize($lightColor, 0.5),
-        inset 6px 6px 16px 0 transparentize($shadowColor, 0.5);
+          inset 6px 6px 16px 0 transparentize($shadowColor, 0.5);
       }
 
       span {
