@@ -7,6 +7,7 @@ import { EditorSelectInput } from "./EditorSelectInput";
 import { EditorColorInput } from "./EditorColorInput";
 import { SingleOrMultiple } from "../Types";
 import { EditorInputBase } from "./EditorInputBase";
+import { EditorType } from "../Enums";
 
 export class EditorGroup extends EditorItem {
     public readonly children: EditorItem[];
@@ -110,7 +111,7 @@ export class EditorGroup extends EditorItem {
     public addProperty<T>(
         name: string,
         label: string,
-        type: string,
+        type: EditorType,
         value?: SingleOrMultiple<number | string | boolean | undefined | null>,
         autoMap = true
     ): EditorInputBase {
@@ -128,16 +129,16 @@ export class EditorGroup extends EditorItem {
         const inputName = `${this.name}_${name}`;
 
         switch (type) {
-            case "number":
+            case EditorType.number:
                 item = new EditorNumberInput(this.data, inputName, name, value as number | undefined, autoMap);
                 break;
-            case "boolean":
+            case EditorType.boolean:
                 item = new EditorCheckboxInput(this.data, inputName, name, value as boolean | undefined, autoMap);
                 break;
-            case "color":
+            case EditorType.color:
                 item = new EditorColorInput(this.data, inputName, name, value as string | undefined, autoMap);
                 break;
-            case "select":
+            case EditorType.select:
                 item = new EditorSelectInput(this.data, inputName, name, value as string | undefined, autoMap);
                 break;
             default:
