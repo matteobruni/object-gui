@@ -1,6 +1,7 @@
 const code = document.getElementById("code");
 
 const data = {
+  enable: true,
   prop1: "pluto",
   prop2: 3,
   group1: {
@@ -37,6 +38,12 @@ group1
 
     console.log(data);
   });
+
+editor.root.addProperty("enable", "Enable", "boolean").change(() => {
+  code.innerText = JSON.stringify(data, null, 4);
+
+  console.log(data);
+});
 
 editor.root.addProperty("prop1", "Property 1", "string").change(() => {
   code.innerText = JSON.stringify(data, null, 4);
