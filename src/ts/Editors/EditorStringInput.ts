@@ -1,38 +1,33 @@
-import { EditorItem } from "./EditorItem";
+import { EditorInputBase } from "./EditorInputBase";
 
-export class EditorStringInput extends EditorItem {
-    constructor(
-        data: unknown,
-        private readonly id: string,
-        private readonly name: string,
-        private value: string,
-        private readonly change?: (value: string) => void,
-        private readonly autoSet = true
-    ) {
-        super(data);
+export class EditorStringInput extends EditorInputBase {
+    constructor(data: unknown, id: string, name: string, value?: string, autoMap = true) {
+        super(
+            data,
+            () => document.createElement("input"),
+            id,
+            name,
+            () => "",
+            (self: EditorInputBase) => {
+                const input = self.element as HTMLInputElement;
+
+                return input.value;
+            },
+            (self: EditorInputBase, value: unknown) => {
+                const input = self.element as HTMLInputElement;
+
+                input.value = value as string;
+            },
+            value,
+            autoMap
+        );
 
         const input = this.element as HTMLInputElement;
 
-        input.id = `input_${this.id}`;
-        input.value = this.value;
         input.type = "text";
 
         input.addEventListener("change", () => {
-            this.value = (this.element as HTMLInputElement).value;
-
-            if (autoSet) {
-                const obj = data as Record<string, string>;
-
-                obj[name] = this.value;
-            }
-
-            if (change) {
-                change(this.value);
-            }
+            this.changeEventHandler();
         });
-    }
-
-    protected createElement(): HTMLElement {
-        return document.createElement("input");
     }
 }

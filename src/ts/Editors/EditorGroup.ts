@@ -5,7 +5,8 @@ import { EditorNumberInput } from "./EditorNumberInput";
 import { EditorCheckboxInput } from "./EditorCheckboxInput";
 import { EditorSelectInput } from "./EditorSelectInput";
 import { EditorColorInput } from "./EditorColorInput";
-import { SingleOrMultiple } from "../Types/SingleOrMultiple";
+import { SingleOrMultiple } from "../Types";
+import { EditorInputBase } from "./EditorInputBase";
 
 export class EditorGroup extends EditorItem {
     public readonly children: EditorItem[];
@@ -20,7 +21,7 @@ export class EditorGroup extends EditorItem {
         collapsed: boolean,
         themeSelect?: HTMLSelectElement
     ) {
-        super(data);
+        super(data, () => document.createElement("div"));
 
         this.collapsed = collapsed;
         this.children = [];
@@ -92,7 +93,7 @@ export class EditorGroup extends EditorItem {
         return new EditorGroup(data, `${this.name}_${name}`, title, parent, false, themeSelect);
     }
 
-    public addGroup(name: string, title: string, customData?: unknown, collapsed = true): EditorGroup {
+    public addGroup(name: string, title: string, collapsed = true, customData?: unknown): EditorGroup {
         let data = customData ?? this.data;
 
         if (!customData) {
@@ -106,14 +107,13 @@ export class EditorGroup extends EditorItem {
         return subGroup;
     }
 
-    public addProperty(
+    public addProperty<T>(
         name: string,
         label: string,
-        value: SingleOrMultiple<number | string | boolean | undefined | null>,
         type: string,
-        change?: (value: number | string | boolean) => void,
-        autoSet = true
-    ): EditorItem {
+        value?: SingleOrMultiple<number | string | boolean | undefined | null>,
+        autoMap = true
+    ): EditorInputBase {
         const divGroup = document.createElement("div");
 
         divGroup.classList.add("editor-element");
@@ -124,31 +124,27 @@ export class EditorGroup extends EditorItem {
 
         divGroup.append(htmlLabel);
 
-        let item: EditorItem;
+        let item: EditorInputBase;
         const inputName = `${this.name}_${name}`;
 
         switch (type) {
             case "number":
-                item = new EditorNumberInput(this.data, inputName, name, value as number, change, autoSet);
+                item = new EditorNumberInput(this.data, inputName, name, value as number | undefined, autoMap);
                 break;
             case "boolean":
-                item = new EditorCheckboxInput(this.data, inputName, name, value as boolean, change, autoSet);
+                item = new EditorCheckboxInput(this.data, inputName, name, value as boolean | undefined, autoMap);
                 break;
             case "color":
-                item = new EditorColorInput(this.data, inputName, name, value as string, change, autoSet);
+                item = new EditorColorInput(this.data, inputName, name, value as string | undefined, autoMap);
                 break;
             case "select":
-                item = new EditorSelectInput(this.data, inputName, name, value as string, change, autoSet);
+                item = new EditorSelectInput(this.data, inputName, name, value as string | undefined, autoMap);
                 break;
             default:
-                item = new EditorStringInput(this.data, inputName, name, value as string, change, autoSet);
+                item = new EditorStringInput(this.data, inputName, name, value as string | undefined, autoMap);
         }
 
         this.children.push(item);
-
-        if (value === undefined) {
-            (item.element as HTMLInputElement).value = "";
-        }
 
         divGroup.append(item.element);
 
@@ -157,12 +153,14 @@ export class EditorGroup extends EditorItem {
         return item;
     }
 
-    public addButton(name: string, label: string, click?: () => void, autoCall = true): void {
-        const button = new EditorButton(this.data, `${this.name}_${name}`, name, label, click, autoCall);
+    public addButton(name: string, label: string, autoMap = true): EditorButton {
+        const button = new EditorButton(this.data, `${this.name}_${name}`, name, label, autoMap);
 
         this.children.push(button);
 
         this.childrenGroup.append(button.element);
+
+        return button;
     }
 
     public toggleCollapse(): void {
@@ -173,10 +171,6 @@ export class EditorGroup extends EditorItem {
         super.updateCollapse(collapsed);
 
         this.setCollapse();
-    }
-
-    protected createElement(): HTMLElement {
-        return document.createElement("div");
     }
 
     private setCollapse(): void {

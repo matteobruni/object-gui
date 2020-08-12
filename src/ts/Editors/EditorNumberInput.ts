@@ -1,7 +1,7 @@
-import { EditorItem } from "./EditorItem";
 import { Utils } from "../Utils";
+import { EditorInputBase } from "./EditorInputBase";
 
-export class EditorNumberInput extends EditorItem {
+export class EditorNumberInput extends EditorInputBase {
     private _max?: number;
     private _min?: number;
     private _step?: number;
@@ -10,27 +10,46 @@ export class EditorNumberInput extends EditorItem {
         width: number;
     };
 
-    constructor(
-        data: unknown,
-        private readonly id: string,
-        private readonly name: string,
-        private value: number,
-        private readonly change?: (value: number) => void,
-        private readonly autoSet = true
-    ) {
-        super(data);
+    constructor(data: unknown, id: string, name: string, value?: number, autoMap = true) {
+        super(
+            data,
+            () => document.createElement("input"),
+            id,
+            name,
+            () => 0,
+            (self: EditorInputBase) => {
+                const numberSelf = self as EditorNumberInput;
+                const input = numberSelf.element as HTMLInputElement;
+                const value = parseFloat(input.value);
+
+                return Utils.clamp(value, numberSelf._min ?? value, numberSelf._max ?? value);
+            },
+            (self: EditorInputBase, value: unknown) => {
+                const numberSelf = self as EditorNumberInput;
+                const input = numberSelf.element as HTMLInputElement;
+                const numValue = value as number;
+
+                input.value = Utils.clamp(
+                    numValue,
+                    numberSelf._min ?? numValue,
+                    numberSelf._max ?? numValue
+                ).toString();
+            },
+            value,
+            autoMap
+        );
 
         const input = this.element as HTMLInputElement;
 
-        input.id = `input_${this.id}`;
-        input.value = value?.toString();
         input.type = "number";
 
         input.addEventListener("change", () => {
-            const value = parseFloat((this.element as HTMLInputElement).value);
-
-            this.handleChange(value);
+            this.changeEventHandler();
         });
+    }
+
+    private static getDragger(slider: HTMLElement): HTMLElement | null {
+        return slider.querySelector("span") as HTMLElement | null;
     }
 
     public step(step: number): EditorNumberInput {
@@ -72,7 +91,7 @@ export class EditorNumberInput extends EditorItem {
 
         this.updateSliderData(slider);
 
-        const dragger = this.getDragger(slider);
+        const dragger = EditorNumberInput.getDragger(slider);
 
         if (!dragger) {
             return;
@@ -81,26 +100,8 @@ export class EditorNumberInput extends EditorItem {
         this.updateDragger(dragger);
     }
 
-    protected createElement(): HTMLElement {
-        return document.createElement("input");
-    }
-
-    private handleChange(value: number) {
-        this.value = Utils.clamp(value, this._min ?? value, this._max ?? value);
-
-        if (value !== this.value) {
-            (this.element as HTMLInputElement).value = this.value.toString(10);
-        }
-
-        if (this.autoSet) {
-            const obj = this.data as Record<string, number>;
-
-            obj[this.name] = this.value;
-        }
-
-        if (this.change) {
-            this.change(this.value);
-        }
+    protected changeEventHandler(): void {
+        super.changeEventHandler();
 
         const slider = this.getSlider();
 
@@ -108,7 +109,7 @@ export class EditorNumberInput extends EditorItem {
             return;
         }
 
-        const dragger = this.getDragger(slider);
+        const dragger = EditorNumberInput.getDragger(slider);
 
         if (!dragger) {
             return;
@@ -140,10 +141,6 @@ export class EditorNumberInput extends EditorItem {
         };
     }
 
-    private getDragger(slider: HTMLElement): HTMLElement | null {
-        return slider.querySelector("span") as HTMLElement | null;
-    }
-
     private updateDragger(dragger: HTMLElement): void {
         if (!this.slider) {
             return;
@@ -151,8 +148,9 @@ export class EditorNumberInput extends EditorItem {
 
         const max = this._max ?? 0;
         const min = this._min ?? 0;
+        const value = this.value as number;
         const denom = max - min;
-        const width = denom !== 0 ? this.value / denom : 0;
+        const width = denom !== 0 ? value / denom : 0;
 
         dragger.style.width = `${width * this.slider.width}px`;
     }
@@ -182,7 +180,7 @@ export class EditorNumberInput extends EditorItem {
 
         input.value = value.toString(10);
 
-        this.handleChange(value);
+        this.changeEventHandler();
     }
 
     private drawSlider(): void {
@@ -224,8 +222,9 @@ export class EditorNumberInput extends EditorItem {
         let down = false;
         const max = this._max ?? 0;
         const min = this._min ?? 0;
+        const value = this.value as number;
         const denom = Math.abs(max) + Math.abs(min);
-        const width = denom !== 0 ? this.value / denom : 0;
+        const width = denom !== 0 ? value / denom : 0;
 
         dragger.style.width = `${width * this.slider.width}px`;
         dragger.style.left = "0px";

@@ -1,57 +1,40 @@
-import { EditorItem } from "./EditorItem";
-import { ColorUtils } from "../Utils/ColorUtils";
+import { ColorUtils } from "../Utils";
+import { EditorInputBase } from "./EditorInputBase";
 
-export class EditorColorInput extends EditorItem {
-    constructor(
-        data: unknown,
-        private readonly id: string,
-        private readonly name: string,
-        private value: string,
-        private readonly change?: (value: string) => void,
-        private readonly autoSet = true
-    ) {
-        super(data);
+export class EditorColorInput extends EditorInputBase {
+    constructor(data: unknown, id: string, name: string, value?: string, autoMap = true) {
+        super(
+            data,
+            () => document.createElement("input"),
+            id,
+            name,
+            () => "",
+            (self: EditorInputBase) => {
+                const input = self.element as HTMLInputElement;
+
+                return input.value;
+            },
+            (self: EditorInputBase, value: unknown) => {
+                const input = self.element as HTMLInputElement;
+
+                input.value = value as string;
+            },
+            value,
+            autoMap
+        );
 
         const input = this.element as HTMLInputElement;
 
-        input.id = `input_${this.id}`;
-        input.value = this.value;
         input.type = "color";
 
         this.updateStyle(input.value);
 
         input.addEventListener("change", () => {
-            this.value = (this.element as HTMLInputElement).value;
-
-            if (autoSet) {
-                const obj = data as Record<string, string>;
-
-                obj[name] = this.value;
-            }
-
-            if (change) {
-                change(this.value);
-            }
-
-            this.updateStyle(this.value);
+            this.changeEventHandler();
         });
     }
 
-    protected createElement(): HTMLElement {
-        return document.createElement("input");
-    }
-
-    private updateStyle(bgColor: string) {
-        this.element.style.backgroundColor = bgColor;
-
-        const textColor = this.textColor(bgColor);
-
-        if (textColor !== undefined) {
-            this.element.style.color = textColor;
-        }
-    }
-
-    private textColor(value: string | undefined): string | undefined {
+    private static textColor(value: string | undefined): string | undefined {
         if (value === undefined) {
             return undefined;
         }
@@ -65,5 +48,21 @@ export class EditorColorInput extends EditorItem {
         const color = Math.round((rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000);
 
         return color > 125 ? "#000" : "#fff";
+    }
+
+    protected changeEventHandler(): void {
+        super.changeEventHandler();
+
+        this.updateStyle(this.value as string);
+    }
+
+    private updateStyle(bgColor: string) {
+        this.element.style.backgroundColor = bgColor;
+
+        const textColor = EditorColorInput.textColor(bgColor);
+
+        if (textColor !== undefined) {
+            this.element.style.color = textColor;
+        }
     }
 }

@@ -1,38 +1,33 @@
-import { EditorItem } from "./EditorItem";
+import { EditorInputBase } from "./EditorInputBase";
 
-export class EditorCheckboxInput extends EditorItem {
-    constructor(
-        data: unknown,
-        private readonly id: string,
-        private readonly name: string,
-        private value: boolean,
-        private readonly change?: (value: boolean) => void,
-        private readonly autoSet = true
-    ) {
-        super(data);
+export class EditorCheckboxInput extends EditorInputBase {
+    constructor(data: unknown, id: string, name: string, value?: boolean, autoMap = true) {
+        super(
+            data,
+            () => document.createElement("input"),
+            id,
+            name,
+            () => false,
+            (self: EditorInputBase) => {
+                const input = self.element as HTMLInputElement;
+
+                return input.checked;
+            },
+            (self: EditorInputBase, value: unknown) => {
+                const input = self.element as HTMLInputElement;
+
+                input.checked = value as boolean;
+            },
+            value,
+            autoMap
+        );
 
         const input = this.element as HTMLInputElement;
 
-        input.id = `input_${this.id}`;
-        input.checked = this.value;
         input.type = "checkbox";
 
         input.addEventListener("change", () => {
-            this.value = (this.element as HTMLInputElement).checked;
-
-            if (autoSet) {
-                const obj = data as Record<string, boolean>;
-
-                obj[name] = this.value;
-            }
-
-            if (change) {
-                change(this.value);
-            }
+            this.changeEventHandler();
         });
-    }
-
-    protected createElement(): HTMLElement {
-        return document.createElement("input");
     }
 }

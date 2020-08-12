@@ -1,21 +1,22 @@
 import { EditorItem } from "./EditorItem";
 
 export class EditorButton extends EditorItem {
+    private clickHandler?: () => void;
+
     constructor(
         data: unknown,
         private readonly id: string,
         private readonly name: string,
         private readonly label: string,
-        private readonly click?: () => void,
-        private readonly autoCall = true
+        private readonly autoMap = true
     ) {
-        super(data);
+        super(data, () => document.createElement("button"));
 
         this.element.id = `button_${id}`;
         this.element.innerText = label;
         this.element.addEventListener("click", () => {
-            if (autoCall) {
-                const obj = data as Record<string, unknown>;
+            if (this.autoMap) {
+                const obj = this.data as Record<string, unknown>;
                 const func = obj[name];
 
                 if (typeof func === "function") {
@@ -23,13 +24,15 @@ export class EditorButton extends EditorItem {
                 }
             }
 
-            if (click) {
-                click();
+            if (this.clickHandler) {
+                this.clickHandler();
             }
         });
     }
 
-    protected createElement(): HTMLElement {
-        return document.createElement("button");
+    public click(clickHandler?: () => void): EditorButton {
+        this.clickHandler = clickHandler;
+
+        return this;
     }
 }

@@ -1,37 +1,32 @@
-import { EditorItem } from "./EditorItem";
+import { EditorInputBase } from "./EditorInputBase";
 
-export class EditorSelectInput extends EditorItem {
-    constructor(
-        data: unknown,
-        private readonly id: string,
-        private readonly name: string,
-        private value: string,
-        private readonly change?: (value: string) => void,
-        private readonly autoSet = true
-    ) {
-        super(data);
+export class EditorSelectInput extends EditorInputBase {
+    constructor(data: unknown, id: string, name: string, value?: string, autoMap = true) {
+        super(
+            data,
+            () => document.createElement("select"),
+            id,
+            name,
+            () => "",
+            (self: EditorInputBase) => {
+                const select = self.element as HTMLSelectElement;
+
+                return select.value;
+            },
+            (self: EditorInputBase, value: unknown) => {
+                const select = self.element as HTMLSelectElement;
+
+                select.value = value as string;
+            },
+            value,
+            autoMap
+        );
 
         const select = this.element as HTMLSelectElement;
 
-        select.id = `input_${this.id}`;
-
         select.addEventListener("change", () => {
-            this.value = (this.element as HTMLInputElement).value;
-
-            if (autoSet) {
-                const obj = data as Record<string, string>;
-
-                obj[name] = this.value;
-            }
-
-            if (change) {
-                change(this.value);
-            }
+            this.changeEventHandler();
         });
-    }
-
-    protected createElement(): HTMLElement {
-        return document.createElement("select");
     }
 
     public addItem(value: string, text?: string, group?: string): void {
