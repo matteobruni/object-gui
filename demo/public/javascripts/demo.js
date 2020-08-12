@@ -17,7 +17,7 @@ const data = {
 const editor = new Editor("sample", "Sample", data);
 
 editor.top().right();
-editor.theme("light");
+editor.theme("neu-dark");
 
 const group1 = editor.root.addGroup("group1", "Group 1", true);
 

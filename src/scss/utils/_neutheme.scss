@@ -1,0 +1,116 @@
+@mixin create-neu-theme(
+  $name,
+  $bgColor,
+  $textColor,
+  $titleBgColor,
+  $titleTextColor,
+  $sliderBgColor,
+  $buttonBgColor,
+  $buttonTextColor,
+  $buttonHoverBgColor,
+  $lightColor,
+  $shadowColor
+) {
+  .editor-root.editor-theme-neu-#{$name} {
+    margin: 10px;
+    border-radius: 0.5em;
+    box-shadow: 4px 4px 10px 0 transparentize($shadowColor, 0.7);
+  }
+
+  .editor-theme-neu-#{$name} {
+    color: $textColor;
+    background-color: $bgColor;
+
+    .editor-item-title {
+      border-radius: 10px 10px 0 0;
+      /*background-color: $titleBgColor;*/
+      color: $titleTextColor;
+
+      .editor-item-name {
+        line-height: 2;
+      }
+    }
+
+    input:not([type="button"]):not([type="checkbox"]) {
+      color: $textColor;
+      background-color: $bgColor;
+      border-radius: 10px;
+      height: 2rem;
+      box-shadow: inset -6px -6px 16px 0 transparentize($lightColor, 0.5),
+        inset 6px 6px 16px 0 transparentize($shadowColor, 0.5);
+      border: none;
+    }
+
+    select {
+      color: $textColor;
+      background-color: $bgColor;
+      border-radius: 10px;
+      height: 2rem;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-top: 0.25rem;
+      box-shadow: 6px 6px 16px 0 transparentize($shadowColor, 0.5), -6px -6px 16px 0 transparentize($lightColor, 0.5);
+      border: none;
+    }
+
+    button,
+    input[type="button"] {
+      color: $buttonTextColor;
+      background-color: $buttonBgColor;
+      border: none;
+      height: 2rem;
+      border-radius: 10px;
+      box-shadow: 6px 6px 16px 0 transparentize($shadowColor, 0.5), -6px -6px 16px 0 transparentize($lightColor, 0.5);
+
+      &:active {
+        box-shadow: inset -6px -6px 16px 0 transparentize($lightColor, 0.5),
+          inset 6px 6px 16px 0 transparentize($shadowColor, 0.5);
+      }
+    }
+
+    .editor-group,
+    &.editor-group {
+      border-radius: 10px;
+      padding: 10px 5px 5px 5px;
+      margin-bottom: 20px;
+      box-shadow: 4px 4px 10px 0 transparentize($shadowColor, 0.7);
+
+      label {
+        line-height: 2;
+        padding-top: 0.25rem;
+      }
+
+      .editor-button-theme {
+        select {
+          height: 2rem;
+        }
+      }
+
+      .editor-button-collapse {
+        button {
+          height: 2rem;
+        }
+      }
+    }
+
+    .range-slider {
+      background-color: $bgColor;
+      border-radius: 20px;
+      box-shadow: inset -6px -6px 16px 0 transparentize($lightColor, 0.5),
+        inset 6px 6px 16px 0 transparentize($shadowColor, 0.5);
+
+      &:before {
+        background-color: $bgColor;
+        border-radius: 20px;
+        box-shadow: inset -6px -6px 16px 0 transparentize($lightColor, 0.5),
+          inset 6px 6px 16px 0 transparentize($shadowColor, 0.5);
+      }
+
+      span {
+        background-color: $sliderBgColor;
+        border-radius: 20px;
+        box-shadow: 6px 6px 16px 0 transparentize($shadowColor, 0.5), -6px -6px 16px 0 transparentize($lightColor, 0.5);
+      }
+    }
+  }
+}
