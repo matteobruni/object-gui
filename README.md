@@ -37,32 +37,70 @@ const Editor = require("object-gui");
 ### Usage
 
 ```javascript
-var data = {
+const code = document.getElementById("code");
+
+const data = {
   prop1: "pluto",
+  prop2: 3,
   group1: {
     prop1: "paperino",
+    prop2: 0.3,
+  },
+  color1: "#ff0000",
+  select1: "Item 2",
+  alert: function () {
+    alert(JSON.stringify(data, null, 4));
   },
 };
 
-var editor = new Editor("sample", "Sample", data);
+const editor = new Editor("sample", "Sample", data);
 
+editor.top().right();
 editor.theme("light");
 
-var group1 = editor.root.addGroup("group1", "Group 1", undefined, false); // The third parameter is a custom object if the first is not the right property to navigate
+const group1 = editor.root.addGroup("group1", "Group 1", true);
 
-group1.addProperty("group1_prop1", "Property 1", data.group1.prop1, "string", (value) => {
-  data.group1.prop1 = value;
+group1.addProperty("prop1", "Property 1", "string").change(() => {
+  console.log(data);
+});
+
+group1
+  .addProperty("prop2", "Property 2", "number")
+  .min(0)
+  .max(1)
+  .step(0.01)
+  .change(() => {
+    console.log(data);
+  });
+
+editor.root.addProperty("prop1", "Property 1", "string").change(() => {
+  console.log(data);
+});
+
+editor.root
+  .addProperty("prop2", "Property 2", "number")
+  .min(0)
+  .max(10)
+  .step(0.5)
+  .change(() => {
+    console.log(data);
+  });
+
+editor.root.addProperty("color1", "Color 1", "color").change(() => {
+  console.log(data);
+});
+
+const select1Input = editor.root.addProperty("select1", "Select 1", "select").change(() => {
+  code.innerText = JSON.stringify(data, null, 4);
 
   console.log(data);
 });
 
-editor.root.addProperty("prop1", "Property 1", data.prop1, "string", (value) => {
-  data.prop1 = value;
+select1Input.addItem("Item 1");
+select1Input.addItem("Item 2");
+select1Input.addItem("Item 3");
 
-  console.log(data);
-});
+editor.root.addButton("alert", "Alert");
 
-editor.root.addButton("alert", "Alert", () => {
-  alert(JSON.stringify(data));
-});
+code.innerText = JSON.stringify(data, null, 4);
 ```
