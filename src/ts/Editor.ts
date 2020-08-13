@@ -4,7 +4,7 @@ export class Editor {
     public readonly root: EditorGroup;
     private readonly themeSelect: HTMLSelectElement;
     private currentTheme?: string;
-    private themes: string[];
+    private _themes: string[];
 
     constructor(id: string, name: string, data: unknown) {
         this.themeSelect = document.createElement("select");
@@ -13,7 +13,7 @@ export class Editor {
             this.theme(this.themeSelect.value);
         });
 
-        this.themes = [];
+        this._themes = [];
 
         this.addTheme("blue");
         this.addTheme("dark");
@@ -23,7 +23,7 @@ export class Editor {
         this.addTheme("neu-light");
         this.addTheme("red");
 
-        this.root = EditorGroup.createRoot(`${id}_editor`, `${name} Editor`, data, document.body, this.themeSelect);
+        this.root = EditorGroup.createRoot(`${id}_editor`, name, data, document.body, this.themeSelect);
 
         this.root.element.classList.add("editor-root");
 
@@ -94,6 +94,10 @@ export class Editor {
         option.selected = theme === this.themeSelect.value;
 
         this.themeSelect.options.add(option);
+    }
+
+    public themes(): Iterable<string> {
+        return this._themes;
     }
 
     protected customize(): void {

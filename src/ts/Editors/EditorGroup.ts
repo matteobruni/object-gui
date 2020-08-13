@@ -22,7 +22,7 @@ export class EditorGroup extends EditorItem {
         collapsed: boolean,
         themeSelect?: HTMLSelectElement
     ) {
-        super(data, () => document.createElement("div"));
+        super(data ?? {}, () => document.createElement("div"));
 
         this.collapsed = collapsed;
         this.children = [];
