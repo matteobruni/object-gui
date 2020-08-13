@@ -15,6 +15,7 @@
     margin: 10px;
     border-radius: 0.5em;
     box-shadow: 4px 4px 10px 0 transparentize($shadowColor, 0.7);
+    max-height: calc(100% - 35px);
   }
 
   .editor-theme-neu-#{$name} {

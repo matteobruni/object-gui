@@ -147,7 +147,7 @@
 
 .editor-root {
   position: fixed;
-  max-height: 100vh;
+  max-height: calc(100vh - 15px);
   min-width: 252px;
   max-width: 400px;
   overflow: auto;
