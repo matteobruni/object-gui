@@ -29,5 +29,39 @@ export class EditorCheckboxInput extends EditorInputBase {
         input.addEventListener("change", () => {
             this.changeEventHandler();
         });
+
+        this.fullDom = document.createElement("div");
+
+        this.fullDom.append(this.element);
+
+        const spacer = document.createElement("div");
+
+        spacer.classList.add("editor-spacer");
+
+        this.fullDom.append(spacer);
+    }
+
+    public addItem(): EditorInputBase {
+        return this;
+    }
+
+    public addItemGroup(): EditorInputBase {
+        return this;
+    }
+
+    public addItems(): EditorInputBase {
+        return this;
+    }
+
+    public max(): EditorInputBase {
+        return this;
+    }
+
+    public min(): EditorInputBase {
+        return this;
+    }
+
+    public step(): EditorInputBase {
+        return this;
     }
 }

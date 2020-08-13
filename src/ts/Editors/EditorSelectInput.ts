@@ -29,7 +29,7 @@ export class EditorSelectInput extends EditorInputBase {
         });
     }
 
-    public addItem(value: string, text?: string, group?: string): void {
+    public addItem(value: string, text?: string, group?: string): EditorInputBase {
         const select = this.element as HTMLSelectElement;
         const item = document.createElement("option");
         const groupElement = select.querySelector(`[label=${group}]`);
@@ -39,14 +39,38 @@ export class EditorSelectInput extends EditorInputBase {
         item.selected = this.value === value;
 
         (groupElement ?? select).append(item);
+
+        return this;
     }
 
-    public addItemGroup(name: string): void {
+    public addItems(values: { value: string; text?: string; group?: string }[]): EditorInputBase {
+        for (const value of values) {
+            this.addItem(value.value, value.text, value.group);
+        }
+
+        return this;
+    }
+
+    public addItemGroup(name: string): EditorInputBase {
         const select = this.element as HTMLSelectElement;
         const group = document.createElement("optgroup");
 
         group.label = name;
 
         select.append(group);
+
+        return this;
+    }
+
+    public max(): EditorInputBase {
+        return this;
+    }
+
+    public min(): EditorInputBase {
+        return this;
+    }
+
+    public step(): EditorInputBase {
+        return this;
     }
 }

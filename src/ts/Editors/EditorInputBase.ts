@@ -1,6 +1,7 @@
 import { EditorItem } from "./EditorItem";
 
 export abstract class EditorInputBase extends EditorItem {
+    public fullDom?: HTMLElement;
     protected value: unknown;
     private changeHandler?: (value: unknown) => void;
 
@@ -46,4 +47,16 @@ export abstract class EditorInputBase extends EditorItem {
             this.changeHandler(this.value);
         }
     }
+
+    public abstract step(step: number): EditorInputBase;
+
+    public abstract min(min: number): EditorInputBase;
+
+    public abstract max(max: number): EditorInputBase;
+
+    public abstract addItem(value: string, text?: string, group?: string): EditorInputBase;
+
+    public abstract addItems(values: { value: string; text?: string; group?: string }[]): EditorInputBase;
+
+    public abstract addItemGroup(name: string): EditorInputBase;
 }

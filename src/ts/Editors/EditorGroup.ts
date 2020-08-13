@@ -147,7 +147,13 @@ export class EditorGroup extends EditorItem {
 
         this.children.push(item);
 
-        divGroup.append(item.element);
+        if (item.fullDom) {
+            item.fullDom.classList.add("element-dom");
+
+            divGroup.append(item.fullDom);
+        } else {
+            divGroup.append(item.element);
+        }
 
         this.childrenGroup.append(divGroup);
 

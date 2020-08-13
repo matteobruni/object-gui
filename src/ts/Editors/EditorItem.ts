@@ -1,5 +1,5 @@
 export abstract class EditorItem {
-    public readonly element!: HTMLElement;
+    public readonly element: HTMLElement;
     protected collapsed: boolean;
 
     protected constructor(public readonly data: unknown, protected createElement: () => HTMLElement) {

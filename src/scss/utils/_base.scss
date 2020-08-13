@@ -13,6 +13,11 @@
 
   .editor-element {
     margin-bottom: 0.25rem;
+
+    > input:not(.slider-input),
+    > select {
+      margin-left: 0.4rem;
+    }
   }
 
   .editor-item-title {
@@ -58,8 +63,22 @@
   }
 
   input:not(.slider-input),
-  select {
+  select,
+  .element-dom {
     flex: 3;
+  }
+
+  .element-dom {
+    display: flex;
+
+    input[type="color"] {
+      flex: 1;
+    }
+
+    input[type="color"] + input[type="text"] {
+      margin-left: 5px;
+      flex: 3;
+    }
   }
 
   input.slider-input {
@@ -97,8 +116,12 @@
 
   input[type="checkbox"] {
     padding: 0;
+    flex: auto;
     margin-top: 0.3rem;
-    margin-left: -0.75rem;
+  }
+
+  .editor-spacer {
+    flex: 100%;
   }
 
   button,
@@ -118,7 +141,7 @@
     flex: 2;
     position: relative;
     cursor: ew-resize;
-    margin: 0 0.25rem 0 0.25rem;
+    margin: 0 0.25rem 0 0;
     border-radius: 0.25rem;
 
     &:before {

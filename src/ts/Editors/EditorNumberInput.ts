@@ -43,6 +43,10 @@ export class EditorNumberInput extends EditorInputBase {
 
         input.type = "number";
 
+        this.fullDom = document.createElement("div");
+
+        this.fullDom.append(this.element);
+
         input.addEventListener("change", () => {
             this.changeEventHandler();
         });
@@ -52,7 +56,7 @@ export class EditorNumberInput extends EditorInputBase {
         return slider.querySelector("span") as HTMLElement | null;
     }
 
-    public step(step: number): EditorNumberInput {
+    public step(step: number): EditorInputBase {
         (this.element as HTMLInputElement).step = step.toString(10);
 
         this._step = step;
@@ -60,7 +64,7 @@ export class EditorNumberInput extends EditorInputBase {
         return this;
     }
 
-    public min(min: number): EditorNumberInput {
+    public min(min: number): EditorInputBase {
         (this.element as HTMLInputElement).min = min.toString(10);
 
         this._min = min;
@@ -70,13 +74,25 @@ export class EditorNumberInput extends EditorInputBase {
         return this;
     }
 
-    public max(max: number): EditorNumberInput {
+    public max(max: number): EditorInputBase {
         (this.element as HTMLInputElement).max = max.toString(10);
 
         this._max = max;
 
         this.drawSlider();
 
+        return this;
+    }
+
+    public addItem(): EditorInputBase {
+        return this;
+    }
+
+    public addItemGroup(): EditorInputBase {
+        return this;
+    }
+
+    public addItems(): EditorInputBase {
         return this;
     }
 
@@ -123,7 +139,7 @@ export class EditorNumberInput extends EditorInputBase {
             return null;
         }
 
-        const parent = this.element.parentElement;
+        const parent = this.fullDom;
 
         if (!parent) {
             return null;
@@ -188,11 +204,13 @@ export class EditorNumberInput extends EditorInputBase {
             return;
         }
 
-        const parent = this.element.parentElement;
+        const parent = this.fullDom;
 
         if (!parent) {
             return;
         }
+
+        console.log(parent.childNodes);
 
         const range = parent.querySelector(".range-slider");
 
@@ -208,6 +226,7 @@ export class EditorNumberInput extends EditorInputBase {
 
         slider.appendChild(document.createElement("span"));
 
+        console.log(parent.contains(this.element));
         parent.insertBefore(slider, this.element);
 
         const rect = slider.getBoundingClientRect();

@@ -30,4 +30,28 @@ export class EditorStringInput extends EditorInputBase {
             this.changeEventHandler();
         });
     }
+
+    public addItem(): EditorInputBase {
+        return this;
+    }
+
+    public addItemGroup(): EditorInputBase {
+        return this;
+    }
+
+    public addItems(): EditorInputBase {
+        return this;
+    }
+
+    public max(): EditorInputBase {
+        return this;
+    }
+
+    public min(): EditorInputBase {
+        return this;
+    }
+
+    public step(): EditorInputBase {
+        return this;
+    }
 }
