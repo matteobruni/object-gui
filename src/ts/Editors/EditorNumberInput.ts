@@ -210,8 +210,6 @@ export class EditorNumberInput extends EditorInputBase {
             return;
         }
 
-        console.log(parent.childNodes);
-
         const range = parent.querySelector(".range-slider");
 
         if (range) {
@@ -226,7 +224,6 @@ export class EditorNumberInput extends EditorInputBase {
 
         slider.appendChild(document.createElement("span"));
 
-        console.log(parent.contains(this.element));
         parent.insertBefore(slider, this.element);
 
         const rect = slider.getBoundingClientRect();
