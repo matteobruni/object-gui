@@ -4,17 +4,20 @@ $bgColor: #333;
 $textColor: #fff;
 $lightColor: #333;
 $shadowColor: #000;
+$activeColor: rgb(198, 34, 21);
+$disactiveColor: #777;
 
 @include neutheme.create-neu-theme(
   "dark",
   $bgColor,
   $textColor,
-  rgba(0, 0, 0, 0.03),
   $textColor,
-  rgb(198, 34, 21),
+  $activeColor,
   $bgColor,
   $textColor,
   darken($bgColor, 10%),
+  $activeColor,
+  $disactiveColor,
   $lightColor,
   $shadowColor
 );

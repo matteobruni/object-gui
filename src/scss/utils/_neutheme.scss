@@ -2,12 +2,13 @@
   $name,
   $bgColor,
   $textColor,
-  $titleBgColor,
   $titleTextColor,
   $sliderBgColor,
   $buttonBgColor,
   $buttonTextColor,
   $buttonHoverBgColor,
+  $activeSwitchColor,
+  $disactiveSwitchColor,
   $lightColor,
   $shadowColor
 ) {
@@ -24,7 +25,6 @@
 
     .editor-item-title {
       border-radius: 10px 10px 0 0;
-      /*background-color: $titleBgColor;*/
       color: $titleTextColor;
 
       .editor-item-name {
@@ -60,7 +60,7 @@
         margin: auto;
         height: 100%;
         width: 50%;
-        background-color: $bgColor;
+        background-color: $disactiveSwitchColor;
         box-shadow: -8px -4px 8px 0px $lightColor, 8px 4px 12px 0px $shadowColor;
         border-radius: 20px;
         outline: none;
@@ -71,7 +71,7 @@
       &:checked:before {
         transform: translateX(100%);
         cursor: pointer;
-        background: $sliderBgColor;
+        background: $activeSwitchColor;
       }
     }
 
