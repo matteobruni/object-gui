@@ -81,10 +81,6 @@
     }
   }
 
-  input.slider-input {
-    flex: 1;
-  }
-
   select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -106,18 +102,26 @@
     padding-top: 0.125rem;
   }
 
-  input:not([type="button"]):not([type="checkbox"]) {
-    padding: 0.25rem;
-    border-radius: 0.25rem;
-    font-size: 1rem;
-    width: 100%;
-    height: calc(1rem + 2px);
-  }
+  input {
+    min-width: 0;
 
-  input[type="checkbox"] {
-    padding: 0;
-    flex: auto;
-    margin-top: 0.3rem;
+    &.slider-input {
+      flex: 1;
+    }
+
+    &:not([type="button"]):not([type="checkbox"]) {
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+      width: 100%;
+      height: calc(1rem + 2px);
+    }
+
+    &[type="checkbox"] {
+      padding: 0;
+      flex: auto;
+      margin-top: 0.3rem;
+    }
   }
 
   .editor-spacer {
