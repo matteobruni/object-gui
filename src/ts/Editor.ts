@@ -25,6 +25,51 @@ export class Editor {
 
         this.root = EditorGroup.createRoot(`${id}_editor`, name, data, document.body, this.themeSelect);
 
+        const rootTitle = this.root.element.querySelector(".editor-item-title") as HTMLElement;
+        const rootName = rootTitle?.querySelector(".editor-item-name") as HTMLElement;
+        const rootNameB = rootTitle?.querySelector("b") as HTMLElement;
+
+        let initialX = 0,
+            initialY = 0,
+            currentX = 0,
+            currentY = 0,
+            offsetX = 0,
+            offsetY = 0;
+
+        rootTitle?.addEventListener("mousedown", (downEvent) => {
+            if (downEvent.target !== rootName && downEvent.target !== rootTitle && downEvent.target !== rootNameB) {
+                return;
+            }
+
+            downEvent.preventDefault();
+
+            initialX = downEvent.clientX - offsetX;
+            initialY = downEvent.clientY - offsetY;
+
+            rootTitle.classList.add("dragging");
+
+            document.onmouseup = () => {
+                document.onmouseup = null;
+                document.onmousemove = null;
+                initialX = currentX;
+                initialY = currentY;
+
+                rootTitle.classList.remove("dragging");
+            };
+
+            document.onmousemove = (moveEvent) => {
+                moveEvent.preventDefault();
+
+                currentX = moveEvent.clientX - initialX;
+                currentY = moveEvent.clientY - initialY;
+
+                offsetX = currentX;
+                offsetY = currentY;
+
+                this.root.element.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+            };
+        });
+
         this.root.element.classList.add("editor-root");
 
         this.customize();

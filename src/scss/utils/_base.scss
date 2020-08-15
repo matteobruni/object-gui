@@ -197,6 +197,14 @@
   overflow: auto;
   margin: 5px;
   font-family: "Avenir Next", Helvetica, "Helvetica Neue", Arial, sans-serif;
+
+  > .editor-item-title {
+    cursor: grab;
+
+    &.dragging {
+      cursor: grabbing;
+    }
+  }
 }
 
 .editor-top {
