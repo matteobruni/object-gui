@@ -7,6 +7,10 @@ export class Editor {
     private _themes: string[];
 
     constructor(id: string, name: string, data: unknown) {
+        if (data === null || data === undefined) {
+            throw new Error("No valid data argument");
+        }
+
         this.themeSelect = document.createElement("select");
 
         this.themeSelect.addEventListener("change", () => {

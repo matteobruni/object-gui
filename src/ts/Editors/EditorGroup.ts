@@ -22,7 +22,7 @@ export class EditorGroup extends EditorItem {
         collapsed: boolean,
         themeSelect?: HTMLSelectElement
     ) {
-        super(data ?? {}, () => document.createElement("div"));
+        super(data, () => document.createElement("div"));
 
         this.collapsed = collapsed;
         this.children = [];
@@ -94,13 +94,8 @@ export class EditorGroup extends EditorItem {
         return new EditorGroup(data, `${this.name}_${name}`, title, parent, false, themeSelect);
     }
 
-    public addGroup(name: string, title: string, collapsed = true, customData?: unknown): EditorGroup {
-        let data = customData ?? this.data;
-
-        if (!customData) {
-            data = (data as Record<string, unknown>)[name];
-        }
-
+    public addGroup(name: string, title: string, collapsed = true, customParent?: unknown): EditorGroup {
+        const data = ((customParent ?? this.data) as Record<string, unknown>)[name];
         const subGroup = new EditorGroup(data, `${this.name}_${name}`, title, this.childrenGroup, collapsed);
 
         this.children.push(subGroup);
