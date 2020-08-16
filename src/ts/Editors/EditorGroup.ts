@@ -95,7 +95,13 @@ export class EditorGroup extends EditorItem {
     }
 
     public addGroup(name: string, title: string, collapsed = true, customParent?: unknown): EditorGroup {
-        const data = ((customParent ?? this.data) as Record<string, unknown>)[name];
+        const parentData = (customParent ?? this.data) as Record<string, unknown>;
+
+        if (!parentData[name]) {
+            parentData[name] = {};
+        }
+
+        const data = parentData[name];
         const subGroup = new EditorGroup(data, `${this.name}_${name}`, title, this.childrenGroup, collapsed);
 
         this.children.push(subGroup);
