@@ -1,10 +1,10 @@
 import { EditorGroup } from "./Editors";
 
 export class Editor {
-    public readonly root: EditorGroup;
+    public readonly root;
     private readonly themeSelect: HTMLSelectElement;
     private currentTheme?: string;
-    private _themes: string[];
+    private readonly _themes: string[];
 
     constructor(id: string, name: string, data: unknown) {
         if (data === null || data === undefined) {
