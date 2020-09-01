@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
-    "@typescript-eslint/eslint-plugin": "^3.7.0",
+    "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^3.6.1",
     "babel-loader": "^8.1.0",
     "clean-css-cli": "^4.3.0",
