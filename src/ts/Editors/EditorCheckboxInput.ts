@@ -8,6 +8,7 @@ export class EditorCheckboxInput extends EditorInputBase {
             id,
             name,
             () => false,
+            (value: unknown) => value,
             (self: EditorInputBase) => {
                 const input = self.element as HTMLInputElement;
 

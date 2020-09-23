@@ -11,6 +11,7 @@ export abstract class EditorInputBase extends EditorItem {
         protected readonly id: string,
         protected readonly name: string,
         protected getDefaultValue: () => unknown,
+        protected transformValue: (value: unknown) => unknown,
         protected getValueFromInput: (self: EditorInputBase) => unknown,
         protected setValueToInput: (self: EditorInputBase, value: unknown) => void,
         value?: unknown,
@@ -23,7 +24,7 @@ export abstract class EditorInputBase extends EditorItem {
 
         input.id = `input_${this.id}`;
 
-        this.value = value ?? (this.autoMap ? obj[this.name] : this.getDefaultValue());
+        this.value = transformValue(value ?? (this.autoMap ? obj[this.name] : this.getDefaultValue()));
 
         this.setValueToInput(this, this.value);
     }

@@ -8,6 +8,7 @@ export class EditorSelectInput extends EditorInputBase {
             id,
             name,
             () => "",
+            (value: unknown) => value,
             (self: EditorInputBase) => {
                 const select = self.element as HTMLSelectElement;
 

@@ -1,4 +1,7 @@
-#colorPreview {
+#colorPreview1,
+#colorPreview2,
+#colorPreview3,
+#colorPreview4 {
   width: 2em;
   height: 2em;
   border-radius: 0.5em;

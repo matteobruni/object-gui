@@ -8,6 +8,7 @@ import { EditorColorInput } from "./EditorColorInput";
 import { SingleOrMultiple } from "../Types";
 import { EditorInputBase } from "./EditorInputBase";
 import { EditorType } from "../Enums";
+import { IHsl, IHsv, IRgb } from "../Interfaces";
 
 export class EditorGroup extends EditorItem {
     public readonly children: EditorItem[];
@@ -113,7 +114,7 @@ export class EditorGroup extends EditorItem {
         name: string,
         label: string,
         type: EditorType,
-        value?: SingleOrMultiple<number | string | boolean | undefined | null>,
+        value?: SingleOrMultiple<unknown>,
         autoMap = true
     ): EditorInputBase {
         const divGroup = document.createElement("div");
@@ -137,7 +138,13 @@ export class EditorGroup extends EditorItem {
                 item = new EditorCheckboxInput(this.data, inputName, name, value as boolean | undefined, autoMap);
                 break;
             case EditorType.color:
-                item = new EditorColorInput(this.data, inputName, name, value as string | undefined, autoMap);
+                item = new EditorColorInput(
+                    this.data,
+                    inputName,
+                    name,
+                    value as string | IRgb | IHsl | IHsv | undefined,
+                    autoMap
+                );
                 break;
             case EditorType.select:
                 item = new EditorSelectInput(this.data, inputName, name, value as string | undefined, autoMap);

@@ -17,6 +17,7 @@ export class EditorNumberInput extends EditorInputBase {
             id,
             name,
             () => 0,
+            (value: unknown) => value,
             (self: EditorInputBase) => {
                 const numberSelf = self as EditorNumberInput;
                 const input = numberSelf.element as HTMLInputElement;

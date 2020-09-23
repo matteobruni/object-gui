@@ -8,6 +8,7 @@ export class EditorStringInput extends EditorInputBase {
             id,
             name,
             () => "",
+            (value: unknown) => value,
             (self: EditorInputBase) => {
                 const input = self.element as HTMLInputElement;
 

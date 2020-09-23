@@ -1,5 +1,1 @@
-export interface IHsl {
-    h: number;
-    l: number;
-    s: number;
-}
+export type { IHsl } from "./Colors";

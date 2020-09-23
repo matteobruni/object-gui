@@ -9,6 +9,21 @@ const data = {
     prop2: 0.3,
   },
   color1: "#ff0000",
+  color2: {
+    r: 255,
+    g: 0,
+    b: 0
+  },
+  color3: {
+    h: 0,
+    s: 100,
+    l: 50
+  },
+  color4: {
+    h: 0,
+    s: 100,
+    v: 100
+  },
   select1: "Item 2",
   alert: function () {
     alert(JSON.stringify(data, null, 4));
@@ -64,7 +79,31 @@ editor.root
 editor.root.addProperty("color1", "Color 1", "color").change(() => {
   code.innerText = JSON.stringify(data, null, 4);
 
-  document.getElementById("colorPreview").style.backgroundColor = data.color1;
+  document.getElementById("colorPreview1").style.backgroundColor = data.color1;
+
+  console.log(data);
+});
+
+editor.root.addProperty("color2", "Color 2", "color").change(() => {
+  code.innerText = JSON.stringify(data, null, 4);
+
+  document.getElementById("colorPreview2").style.backgroundColor = data.color2;
+
+  console.log(data);
+});
+
+editor.root.addProperty("color3", "Color 3", "color").change(() => {
+  code.innerText = JSON.stringify(data, null, 4);
+
+  document.getElementById("colorPreview3").style.backgroundColor = data.color3;
+
+  console.log(data);
+});
+
+editor.root.addProperty("color4", "Color 4", "color").change(() => {
+  code.innerText = JSON.stringify(data, null, 4);
+
+  document.getElementById("colorPreview4").style.backgroundColor = data.color4;
 
   console.log(data);
 });
@@ -83,4 +122,7 @@ editor.root.addButton("alert", "Alert");
 
 code.innerText = JSON.stringify(data, null, 4);
 
-document.getElementById("colorPreview").style.backgroundColor = data.color1;
+document.getElementById("colorPreview1").style.backgroundColor = data.color1;
+document.getElementById("colorPreview2").style.backgroundColor = data.color2;
+document.getElementById("colorPreview3").style.backgroundColor = data.color3;
+document.getElementById("colorPreview4").style.backgroundColor = data.color4;

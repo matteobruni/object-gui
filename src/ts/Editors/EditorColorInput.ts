@@ -1,16 +1,47 @@
+import { IHsl, IHsv, IRgb } from "../Interfaces";
 import { ColorUtils } from "../Utils";
 import { EditorInputBase } from "./EditorInputBase";
 
 export class EditorColorInput extends EditorInputBase {
     private readonly colorInput: HTMLInputElement;
 
-    constructor(data: unknown, id: string, name: string, value?: string, autoMap = true) {
+    constructor(data: unknown, id: string, name: string, value?: string | IRgb | IHsl | IHsv, autoMap = true) {
         super(
             data,
             () => document.createElement("input"),
             id,
             name,
             () => "",
+            (value: unknown) => {
+                let colorStringValue: string | undefined;
+
+                if (value === undefined) {
+                    colorStringValue = undefined;
+                } else if (typeof value === "string") {
+                    colorStringValue = value;
+                } else {
+                    let rgb = value as IRgb;
+                    const hsl = value as IHsl;
+
+                    if (hsl.h !== undefined && hsl.l !== undefined) {
+                        rgb = ColorUtils.hslToRgb(hsl);
+                    } else {
+                        const hsv = value as IHsv;
+
+                        if (hsv.h !== undefined && hsv.v !== undefined) {
+                            rgb = ColorUtils.hsvToRgb(hsv);
+                        }
+                    }
+
+                    const r = rgb.r.toString(16).padStart(2, "0"),
+                        g = rgb.g.toString(16).padStart(2, "0"),
+                        b = rgb.b.toString(16).padStart(2, "0");
+
+                    colorStringValue = `#${r}${g}${b}`;
+                }
+
+                return colorStringValue;
+            },
             (self: EditorInputBase) => {
                 const input = self.element as HTMLInputElement;
 

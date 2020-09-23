@@ -1,5 +1,1 @@
-export interface IRgb {
-    b: number;
-    g: number;
-    r: number;
-}
+export type { IRgb } from "./Colors";
