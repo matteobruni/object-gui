@@ -28,7 +28,7 @@ export class EditorGroup extends EditorItem {
         this.collapsed = collapsed;
         this.children = [];
 
-        this.element.id = name;
+        this.element.id = this.name;
 
         this.element.classList.add("editor", "editor-group");
 
@@ -42,7 +42,7 @@ export class EditorGroup extends EditorItem {
 
         const b = document.createElement("b");
 
-        b.textContent = title;
+        b.textContent = this.title;
 
         divName.append(b);
         divTitle.append(divName);
@@ -110,7 +110,7 @@ export class EditorGroup extends EditorItem {
         return subGroup;
     }
 
-    public addProperty<T>(
+    public addProperty(
         name: string,
         label: string,
         type: EditorType,

@@ -12,12 +12,12 @@ export class EditorButton extends EditorItem {
     ) {
         super(data, () => document.createElement("button"));
 
-        this.element.id = `button_${id}`;
-        this.element.innerText = label;
+        this.element.id = `button_${this.id}`;
+        this.element.innerText = this.label;
         this.element.addEventListener("click", () => {
             if (this.autoMap) {
                 const obj = this.data as Record<string, unknown>;
-                const func = obj[name];
+                const func = obj[this.name];
 
                 if (typeof func === "function") {
                     func.bind(obj)();

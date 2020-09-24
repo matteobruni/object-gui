@@ -1,5 +1,4 @@
-import type { IRgb, IRgba, IHsl, IHsla, IValueColor, IHsv, IHsva } from "../Interfaces/Colors";
-import { Utils } from "./Utils";
+import type { IRgb, IRgba, IHsl, IHsla, IHsv, IHsva } from "../Interfaces/Colors";
 
 export class ColorUtils {
     public static rgbToHsl(color: IRgb): IHsl {

@@ -1,7 +1,9 @@
-import { EditorGroup } from "./Editors";
+import { EditorType, SingleOrMultiple } from ".";
+import { EditorButton, EditorGroup } from "./Editors";
+import { EditorInputBase } from "./Editors/EditorInputBase";
 
 export class Editor {
-    public readonly root;
+    private readonly root;
     private readonly themeSelect: HTMLSelectElement;
     private currentTheme?: string;
     private readonly _themes: string[];
@@ -79,6 +81,24 @@ export class Editor {
         this.customize();
 
         this.top().right().theme("light");
+    }
+
+    public addButton(name: string, label: string, autoMap = true): EditorButton {
+        return this.root.addButton(name, label, autoMap);
+    }
+
+    public addGroup(name: string, title: string, collapsed = true, customParent?: unknown): EditorGroup {
+        return this.root.addGroup(name, title, collapsed, customParent);
+    }
+
+    public addProperty(
+        name: string,
+        label: string,
+        type: EditorType,
+        value?: SingleOrMultiple<unknown>,
+        autoMap = true
+    ): EditorInputBase {
+        return this.root.addProperty(name, label, type, value, autoMap);
     }
 
     public top(): Editor {
