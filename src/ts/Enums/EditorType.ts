@@ -3,5 +3,6 @@ export enum EditorType {
     boolean = "boolean",
     color = "color",
     select = "select",
+	Any="any"
     string = "string",
 }
