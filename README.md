@@ -1,4 +1,4 @@
-README in: [Indonesia](./README-ID.md)
+README in: [Indonesian](./README-ID.md)
 
 # Object GUI - Javascript Object Editor
 
