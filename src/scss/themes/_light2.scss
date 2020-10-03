@@ -1,17 +1,17 @@
 @use "../utils/theme";
 
-$bgColor: #454879;
-$textColor: #fff;
-$borderColor: rgba(255, 255, 255, 0.21);
+$bgColor: #f0dea2;
+$textColor: rgb(0, 0, 0);
+$borderColor: rgba(0, 0, 0, 0.21);
 
 @include theme.create-theme(
-  "solarizeddark",
+  "light2",
   $bgColor,
   $textColor,
   $borderColor,
-  rgb(255, 255, 255),
+  rgb(0, 0, 0),
   $textColor,
-  rgb(255, 255, 255),
+  rgb(0, 0, 0),
   $bgColor,
   $textColor,
   darken($bgColor, 10%)
