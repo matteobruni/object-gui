@@ -1,0 +1,18 @@
+@use "../utils/theme";
+
+$bgColor: #f0dea2;
+$textColor: rgb(0, 0, 0);
+$borderColor: rgba(0, 0, 0, 0.21);
+
+@include theme.create-theme(
+  "solarizedlight",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  rgb(0, 0, 0),
+  $textColor,
+  rgb(0, 0, 0),
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%)
+);
