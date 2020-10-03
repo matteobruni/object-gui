@@ -1,11 +1,11 @@
 @use "../utils/theme";
 
-$bgColor: #e05c2f;
+$bgColor: #454879;
 $textColor: #fff;
-$borderColor: rgba(0, 0, 0, 0.125);
+$borderColor: rgba(255, 255, 255, 0.21);
 
 @include theme.create-theme(
-  "purple",
+  "solarizeddark",
   $bgColor,
   $textColor,
   $borderColor,
