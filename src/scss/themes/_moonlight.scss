@@ -1,0 +1,18 @@
+@use "../utils/theme";
+
+$bgColor: #454879;
+$textColor: #fff;
+$borderColor: rgba(255, 255, 255, 0.21);
+
+@include theme.create-theme(
+  "moonlight",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  rgb(255, 255, 255),
+  $textColor,
+  rgb(255, 255, 255),
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%)
+);
