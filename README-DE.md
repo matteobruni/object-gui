@@ -1,21 +1,20 @@
-README in: [Indonesian](./README-ID.md)
-README in: [German](./README-DE.md)
+README in: [Englisch](./README.md)
 
 # Object GUI - Javascript Object Editor
 
-Object GUI is your fully customizable Javascript Object GUI Editor
+Object GUI ist ein vollständig anpassbarer JavaScript Object GUI Editor
 
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/matteobruni/object-gui)
 
-## Usage
+## Benutzung
 
-You can see a working sample here: <https://codepen.io/matteobruni/pen/oNxNvja>
+Ein funktionierendes Beispiel ist hier zu finden: <https://codepen.io/matteobruni/pen/oNxNvja>
 
 ### Installation
 
 #### HTML / Vanilla JS
 
-You need to include these files:
+Du musst folgende Dateien inkludieren:
 
 _CSS_
 
@@ -37,7 +36,7 @@ import { Editor } from "object-gui";
 const Editor = require("object-gui");
 ```
 
-### Usage
+### Benutzung
 
 ```javascript
 const code = document.getElementById("code");
