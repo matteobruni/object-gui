@@ -36,6 +36,7 @@ export class Editor {
         this.addTheme("sunlight");
         this.addTheme("moonlight");
         this.addTheme("orange");
+        this.addTheme("gold");
 
         this.root = EditorGroup.createRoot(`${id}_editor`, name, data, document.body, this.themeSelect);
 
