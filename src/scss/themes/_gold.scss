@@ -1,0 +1,18 @@
+@use "../utils/theme";
+
+$bgColor: #ffca28;
+$textColor: #000;
+$borderColor: rgba(0, 0, 0, 0.125);
+
+@include theme.create-theme(
+  "gold",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  rgba(0, 0, 0, 0.03),
+  $textColor,
+  rgba(0, 0, 0, 0.125),
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%)
+);
