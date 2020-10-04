@@ -351,3 +351,5 @@ MigrationBackup/
 
 dist/
 .idea/
+src/scss/editor.css
+src/scss/editor.css.map
