@@ -31,6 +31,7 @@ export class Editor {
         this.addTheme("light");
         this.addTheme("neu-dark");
         this.addTheme("neu-light");
+        this.addTheme("neu-moon");
         this.addTheme("red");
         this.addTheme("brown");
         this.addTheme("purple");
