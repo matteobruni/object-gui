@@ -16,6 +16,8 @@ You need to add a new `scss` file here: `src/scss/themes/` like `src/scss/themes
 
 The content should be something like:
 
+*Normal Theme*
+
 ```scss
 @use "../utils/theme";
 
@@ -34,6 +36,33 @@ $borderColor: #000;
   $bgColor, /* button background color */
   $textColor, /* button text color */
   darken($bgColor, 10%) /* button hover background color */
+);
+```
+
+*Neumorphic Theme*
+```scss
+@use "../utils/neutheme";
+
+$bgColor: #fff;
+$textColor: #000;
+$lightColor: #fff;
+$shadowColor: rgba(209, 205, 199);
+$activeColor: rgb(22, 57, 230);
+$disactiveColor: #ccc;
+
+@include neutheme.create-neu-theme(
+  "light", /* theme name, used in scripts and classes */
+  $bgColor, /* background color */
+  $textColor, /* text color */
+  $textColor, /* title text color */
+  $activeColor, /* slider background color */
+  $bgColor, /* button background color */
+  $textColor, /* button text color */
+  darken($bgColor, 10%), /* button hover background color */
+  $activeColor, /* active switch color */
+  $disactiveColor, /* disactive switch color */
+  $lightColor, /* light color */
+  $shadowColor /* shadow color */
 );
 ```
  
