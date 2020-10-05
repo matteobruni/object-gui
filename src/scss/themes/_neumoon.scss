@@ -1,0 +1,23 @@
+@use "../utils/neutheme";
+
+$bgColor: #454879;
+$textColor: #fff;
+$lightColor: #5a5fa0;
+$shadowColor: #232446;
+$activeColor: #ffaa33;
+$disactiveColor: #777;
+
+@include neutheme.create-neu-theme(
+  "moon",
+  $bgColor,
+  $textColor,
+  $textColor,
+  $activeColor,
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%),
+  $activeColor,
+  $disactiveColor,
+  $lightColor,
+  $shadowColor
+);
