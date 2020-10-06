@@ -1,0 +1,18 @@
+@use "../utils/theme";
+
+$bgColor: #ff14a5;
+$textColor: #fff;
+$borderColor: rgb(121, 0, 190);
+
+@include theme.create-theme(
+  "pink",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  rgba(0, 0, 0, 0.03),
+  $textColor,
+  rgba(0, 0, 0, 0.125),
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%)
+);
