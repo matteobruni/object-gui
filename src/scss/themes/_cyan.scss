@@ -1,6 +1,6 @@
 @use "../utils/theme";
 $bgColor: #00ffff;
-$textColor: rgb(255, 247, 247);
+$textColor: rgb(0, 18, 18);
 $borderColor: rgba(0, 0, 0, 0.22);
 
 @include theme.create-theme(
