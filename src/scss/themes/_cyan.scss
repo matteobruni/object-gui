@@ -1,0 +1,5 @@
+@use "../utils/theme";
+$bgColor: #00FFFF;
+$textColor: rgb(255, 247, 247);
+$borderColor: rgba(0, 0, 0, 0.220);
+@include theme.create-theme( "cyan", $bgColor, $textColor, $borderColor, rgba(0, 0, 0, 0.03), $textColor, rgba(0, 0, 0, 0.125), $bgColor, $textColor, darken($bgColor, 10%));
