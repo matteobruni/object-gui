@@ -1,0 +1,18 @@
+@use "../utils/theme";
+
+$bgColor: #20375e;
+$textColor: #19e5e7;
+$borderColor: #f0bb3a;
+
+@include theme.create-theme(
+  "nautilus",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  rgba(0, 0, 0, 0.03),
+  $textColor,
+  rgba(0, 0, 0, 0.125),
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%)
+);
