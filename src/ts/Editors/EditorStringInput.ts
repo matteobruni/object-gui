@@ -8,16 +8,16 @@ export class EditorStringInput extends EditorInputBase {
             id,
             name,
             () => "",
-            (value: unknown) => value,
+            (v: unknown) => v,
             (self: EditorInputBase) => {
-                const input = self.element as HTMLInputElement;
+                const inputEl = self.element as HTMLInputElement;
 
-                return input.value;
+                return inputEl.value;
             },
-            (self: EditorInputBase, value: unknown) => {
-                const input = self.element as HTMLInputElement;
+            (self: EditorInputBase, v: unknown) => {
+                const inputEl = self.element as HTMLInputElement;
 
-                input.value = value as string;
+                inputEl.value = v as string;
             },
             value,
             autoMap

@@ -1,46 +1,6 @@
-import type { IRgb, IRgba, IHsl, IHsla, IHsv, IHsva } from "../Interfaces/Colors";
+import type { IRgb, IRgba, IHsl, IHsla, IHsv } from "../Interfaces";
 
 export class ColorUtils {
-    public static rgbToHsl(color: IRgb): IHsl {
-        const r1 = color.r / 255;
-        const g1 = color.g / 255;
-        const b1 = color.b / 255;
-
-        const max = Math.max(r1, g1, b1);
-        const min = Math.min(r1, g1, b1);
-
-        //Calculate L:
-        const res = {
-            h: 0,
-            l: (max + min) / 2,
-            s: 0,
-        };
-
-        if (max != min) {
-            //Calculate S:
-            res.s = res.l < 0.5 ? (max - min) / (max + min) : (max - min) / (2.0 - max - min);
-            //Calculate H:
-            res.h =
-                r1 === max
-                    ? (g1 - b1) / (max - min)
-                    : (res.h = g1 === max ? 2.0 + (b1 - r1) / (max - min) : 4.0 + (r1 - g1) / (max - min));
-        }
-
-        res.l *= 100;
-        res.s *= 100;
-        res.h *= 60;
-
-        if (res.h < 0) {
-            res.h += 360;
-        }
-
-        return res;
-    }
-
-    public static stringToAlpha(input: string): number | undefined {
-        return ColorUtils.stringToRgba(input)?.a;
-    }
-
     public static stringToRgb(input: string): IRgb | undefined {
         return ColorUtils.stringToRgba(input);
     }
@@ -84,54 +44,6 @@ export class ColorUtils {
             b: rgbResult.b,
             g: rgbResult.g,
             r: rgbResult.r,
-        };
-    }
-
-    public static hslToHsv(hsl: IHsl): IHsv {
-        const l = hsl.l / 100,
-            sl = hsl.s / 100;
-        const v = l + sl * Math.min(l, 1 - l),
-            sv = !v ? 0 : 2 * (1 - l / v);
-
-        return {
-            h: hsl.h,
-            s: sv * 100,
-            v: v * 100,
-        };
-    }
-
-    public static hslaToHsva(hsla: IHsla): IHsva {
-        const hsvResult = ColorUtils.hslToHsv(hsla);
-
-        return {
-            a: hsla.a,
-            h: hsvResult.h,
-            s: hsvResult.s,
-            v: hsvResult.v,
-        };
-    }
-
-    public static hsvToHsl(hsv: IHsv): IHsl {
-        const v = hsv.v / 100,
-            sv = hsv.s / 100;
-        const l = v * (1 - sv / 2),
-            sl = l === 0 || l === 1 ? 0 : (v - l) / Math.min(l, 1 - l);
-
-        return {
-            h: hsv.h,
-            l: l * 100,
-            s: sl * 100,
-        };
-    }
-
-    public static hsvaToHsla(hsva: IHsva): IHsla {
-        const hslResult = ColorUtils.hsvToHsl(hsva);
-
-        return {
-            a: hsva.a,
-            h: hslResult.h,
-            l: hslResult.l,
-            s: hslResult.s,
         };
     }
 
@@ -195,100 +107,6 @@ export class ColorUtils {
         }
 
         return result;
-    }
-
-    public static hsvaToRgba(hsva: IHsva): IRgba {
-        const rgbResult = ColorUtils.hsvToRgb(hsva);
-
-        return {
-            a: hsva.a,
-            b: rgbResult.b,
-            g: rgbResult.g,
-            r: rgbResult.r,
-        };
-    }
-
-    public static rgbToHsv(rgb: IRgb): IHsv {
-        const rgbPercent = {
-                r: rgb.r / 255,
-                g: rgb.g / 255,
-                b: rgb.b / 255,
-            },
-            xMax = Math.max(rgbPercent.r, rgbPercent.g, rgbPercent.b),
-            xMin = Math.min(rgbPercent.r, rgbPercent.g, rgbPercent.b),
-            v = xMax,
-            c = xMax - xMin;
-
-        let h = 0;
-
-        if (v === rgbPercent.r) {
-            h = 60 * ((rgbPercent.g - rgbPercent.b) / c);
-        } else if (v === rgbPercent.g) {
-            h = 60 * (2 + (rgbPercent.b - rgbPercent.r) / c);
-        } else if (v === rgbPercent.b) {
-            h = 60 * (4 + (rgbPercent.r - rgbPercent.g) / c);
-        }
-
-        const s = !v ? 0 : c / v;
-
-        return {
-            h,
-            s: s * 100,
-            v: v * 100,
-        };
-    }
-
-    public static rgbaToHsva(rgba: IRgba): IHsva {
-        const hsvResult = ColorUtils.rgbToHsv(rgba);
-
-        return {
-            a: rgba.a,
-            h: hsvResult.h,
-            s: hsvResult.s,
-            v: hsvResult.v,
-        };
-    }
-
-    /**
-     * Generate a random Rgb color
-     * @param min a minimum seed value for all 3 values
-     */
-    public static getRandomRgbColor(min?: number): IRgb {
-        const fixedMin = min ?? 0;
-        const random = () => Math.random() * (256 - fixedMin) + fixedMin;
-
-        return {
-            b: Math.floor(random()),
-            g: Math.floor(random()),
-            r: Math.floor(random()),
-        };
-    }
-
-    /**
-     * Prepares a rgba() css function from a [[IRgb]] object
-     * @param color the [[IRgb]] color to convert
-     * @param opacity the opacity to apply to color
-     */
-    public static getStyleFromRgb(color: IRgb, opacity?: number): string {
-        return `rgba(${color.r}, ${color.g}, ${color.b}, ${opacity ?? 1})`;
-    }
-
-    /**
-     * Prepares a hsla() css function from a [[IHsl]] object
-     * @param color the [[IHsl]] color to convert
-     * @param opacity the opacity to apply to color
-     */
-    public static getStyleFromHsl(color: IHsl, opacity?: number): string {
-        return `hsla(${color.h}, ${color.s}%, ${color.l}%, ${opacity ?? 1})`;
-    }
-
-    /**
-     * Prepares a hsva() css function from a [[IHsv]] object
-     * @param color the [[IHsv]] color to convert
-     * @param opacity the opacity to apply to color
-     */
-    public static getStyleFromHsv(color: IHsv, opacity?: number): string {
-        return ColorUtils.getStyleFromHsl(this.hsvToHsl(color), opacity);
     }
 
     public static mix(color1: IRgb | IHsl, color2: IRgb | IHsl, size1: number, size2: number): IRgb {

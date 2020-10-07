@@ -8,16 +8,16 @@ export class EditorSelectInput extends EditorInputBase {
             id,
             name,
             () => "",
-            (value: unknown) => value,
+            (v: unknown) => v,
             (self: EditorInputBase) => {
-                const select = self.element as HTMLSelectElement;
+                const input = self.element as HTMLSelectElement;
 
-                return select.value;
+                return input.value;
             },
-            (self: EditorInputBase, value: unknown) => {
-                const select = self.element as HTMLSelectElement;
+            (self: EditorInputBase, v: unknown) => {
+                const input = self.element as HTMLSelectElement;
 
-                select.value = value as string;
+                input.value = v as string;
             },
             value,
             autoMap
