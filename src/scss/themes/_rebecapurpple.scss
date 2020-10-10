@@ -1,0 +1,18 @@
+@use "../utils/theme";
+
+$bgColor:#663399;
+$textColor: rgb(0, 0, 0);
+$borderColor: rgba(0, 0, 0, 0.21);
+
+@include theme.create-theme(
+  "rebecapurpple",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  rgba(0, 0, 0, 0.03),
+  $textColor,
+  rgba(0, 0, 0, 0.03),
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%)
+);
