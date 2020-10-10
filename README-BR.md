@@ -13,7 +13,7 @@ Obeject GUI é um editor visual de Obetos Javascript altamente customizável
 
 ## Exemplo
 
-Pode ver um exempolo funcional aqui:  <https://codepen.io/matteobruni/pen/oNxNvja>
+Você pode acessar um exemplo funcional aqui:  <https://codepen.io/matteobruni/pen/oNxNvja>
 
 ### Instalação
 
