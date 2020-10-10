@@ -44,6 +44,7 @@ export class Editor {
         this.addTheme("nautilus");
         this.addTheme("cyan");
         this.addTheme("yellow");
+        this.addTheme("rebeccapurple");
 
         this.root = EditorGroup.createRoot(`${id}_editor`, name, data, document.body, this.themeSelect);
 
