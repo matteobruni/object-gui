@@ -1,24 +1,25 @@
-README in: [Indonesian](./README-ID.md)
-README in: [German](./README-DE.md)
-README in: [Hebrew](./README-IL.md)
-README in: [Spanish](./README-ES.md)
-README in: [Portuguese](./README-BR.md)
+README em: [Inglês](./README.md)
+README em: [Indonesio](./README-ID.md)
+README em: [Alemão](./README-DE.md)
+README em: [Hebraico](./README-IL.md)
+README em: [Espanhol](./README-ES.md)
+
 
 # Object GUI - Javascript Object Editor
 
-Object GUI is your fully customizable Javascript Object GUI Editor
+Obeject GUI é um editor visual de Obetos Javascript altamente customizável
 
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/matteobruni/object-gui)
 
-## Usage
+## Exemplo
 
-You can see a working sample here: <https://codepen.io/matteobruni/pen/oNxNvja>
+Você pode acessar um exemplo funcional aqui:  <https://codepen.io/matteobruni/pen/oNxNvja>
 
-### Installation
+### Instalação
 
 #### HTML / Vanilla JS
 
-You need to include these files:
+É nessário incluir esses arquivos abaixo:
 
 _CSS_
 
@@ -40,7 +41,7 @@ import { Editor } from "object-gui";
 const Editor = require("object-gui");
 ```
 
-### Usage
+### Uso
 
 ```javascript
 const code = document.getElementById("code");
