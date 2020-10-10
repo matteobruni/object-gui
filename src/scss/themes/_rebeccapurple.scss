@@ -1,15 +1,15 @@
 @use "../utils/theme";
 
-$bgColor:#663399;
-$textColor: rgb(240,248,255);
-$borderColor: rgba(0,0,255,0.3);
+$bgColor: #663399;
+$textColor: rgb(240, 248, 255);
+$borderColor: rgba(0, 0, 255, 0.3);
 
 @include theme.create-theme(
-  "rebecapurpple",
+  "rebeccapurpple",
   $bgColor,
   $textColor,
   $borderColor,
-  rgba(0,0,255,0.3),
+  rgba(0, 0, 255, 0.3),
   $textColor,
   rgba(240, 248, 255, 1),
   $bgColor,
