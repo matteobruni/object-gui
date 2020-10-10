@@ -1,0 +1,23 @@
+@use "../utils/neutheme";
+
+$bgColor: #ffdaf3;
+$textColor: #fff;
+$lightColor: #ffeef9;
+$shadowColor: #ffb3e6;
+$activeColor: #3eafea;
+$disactiveColor: #ccc;
+
+@include neutheme.create-neu-theme(
+  "lightpink",
+  $bgColor,
+  $textColor,
+  $textColor,
+  $activeColor,
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%),
+  $activeColor,
+  $disactiveColor,
+  $lightColor,
+  $shadowColor
+);
