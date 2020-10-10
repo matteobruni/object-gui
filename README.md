@@ -2,6 +2,7 @@ README in: [Indonesian](./README-ID.md)
 README in: [German](./README-DE.md)
 README in: [Hebrew](./README-IL.md)
 README in: [Spanish](./README-ES.md)
+README in: [Portuguese](./README-BR.md)
 
 # Object GUI - Javascript Object Editor
 
