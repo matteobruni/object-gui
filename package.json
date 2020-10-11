@@ -6,7 +6,7 @@
     "editor",
     "dat.gui",
     "javascript",
-    "wyiswyg",
+    "wysiwyg",
     "object",
     "gui",
     "object-gui",
@@ -14,7 +14,7 @@
   ],
   "author": "Matteo Bruni <ar3s@icloud.com>",
   "homepage": "https://github.com/matteobruni/object-gui/",
-  "license": "ISC",
+  "license": "MIT",
   "directories": {
     "dist": "dist"
   },
