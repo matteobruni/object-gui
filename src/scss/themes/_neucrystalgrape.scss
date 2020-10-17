@@ -1,0 +1,29 @@
+@use "../utils/neutheme";
+
+// $name
+// $bgColor
+// $textColor
+// $titleTextColor
+// $sliderBgColor
+// $buttonBgColor
+// $buttonTextColor
+// $buttonHoverBgColor
+// $activeSwitchColor
+// $disactiveSwitchColor
+// $lightColor
+// $shadowColor
+
+@include neutheme.create-neu-theme(
+  "crystalgrape",
+  #8700da,
+  #6efffdac,
+  #6efffdac,
+  #8700da,
+  #8700da,
+  #6efffdac,
+  #8700da,
+  #6efffdac,
+  #3eb1b0ac,
+  #a925fa,
+  #6c04ac
+);
