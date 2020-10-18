@@ -5,7 +5,7 @@ $textColor: rgb(240, 248, 255);
 $borderColor: rgba(0, 0, 255, 0.3);
 
 @include theme.create-theme(
-  "rebeccapurpple",
+  "rebeccapurple",
   $bgColor,
   $textColor,
   $borderColor,
