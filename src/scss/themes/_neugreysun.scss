@@ -8,7 +8,7 @@ $activeColor: rgb(255, 217, 0);
 $disactiveColor: #777;
 
 @include neutheme.create-neu-theme(
-  "dark",
+  "greysun",
   $bgColor,
   $textColor,
   $textColor,
