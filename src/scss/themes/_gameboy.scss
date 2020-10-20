@@ -1,0 +1,18 @@
+@use "../utils/theme";
+
+$bgColor: #8aad00;
+$textColor: #0d380d;
+$borderColor: #2e632d;
+
+@include theme.create-theme(
+  "gameboy",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  rgba(0, 0, 0, 0.03),
+  $textColor,
+  rgba(0, 0, 0, 0.125),
+  $bgColor,
+  $textColor,
+  darken($bgColor, 100%)
+);

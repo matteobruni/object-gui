@@ -50,6 +50,7 @@ export class Editor {
         this.addTheme("neu-crystalgrape");
         this.addTheme("one-dark");
         this.addTheme("neu-greysun");
+        this.addTheme("gameboy");
 
         this.root = EditorGroup.createRoot(`${id}_editor`, name, data, document.body, this.themeSelect);
 
