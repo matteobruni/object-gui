@@ -1,0 +1,18 @@
+@use "../utils/theme";
+
+$bgColor: #565656;
+$textColor: #ffa500;
+$borderColor: #cc8400;
+
+@include theme.create-theme(
+  "greyorange",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  rgba(0, 0, 0, 0.03),
+  $textColor,
+  rgba(0, 0, 0, 0.03),
+  $bgColor,
+  $textColor,
+  darken($bgColor, 30%)
+);
