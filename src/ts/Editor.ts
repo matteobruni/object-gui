@@ -51,7 +51,7 @@ export class Editor {
         this.addTheme("one-dark");
         this.addTheme("neu-greysun");
         this.addTheme("gameboy");
-
+        this.addTheme("trafficlights");
         this.root = EditorGroup.createRoot(`${id}_editor`, name, data, document.body, this.themeSelect);
 
         const rootTitle = this.root.element.querySelector(".editor-item-title") as HTMLElement;
