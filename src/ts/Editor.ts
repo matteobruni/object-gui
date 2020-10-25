@@ -31,6 +31,7 @@ export class Editor {
         this.addTheme("light");
         this.addTheme("neu-dark");
         this.addTheme("neu-light");
+        this.addTheme("neu-moon");
         this.addTheme("red");
         this.addTheme("brown");
         this.addTheme("purple");
@@ -39,9 +40,18 @@ export class Editor {
         this.addTheme("orange");
         this.addTheme("gold");
         this.addTheme("grey");
-        this.addTheme("yellow");
         this.addTheme("pink");
-
+        this.addTheme("nautilus");
+        this.addTheme("cyan");
+        this.addTheme("yellow");
+        this.addTheme("rebeccapurple");
+        this.addTheme("neu-pink");
+        this.addTheme("night-sky");
+        this.addTheme("neu-crystalgrape");
+        this.addTheme("one-dark");
+        this.addTheme("neu-greysun");
+        this.addTheme("gameboy");
+        this.addTheme("trafficlights");
         this.root = EditorGroup.createRoot(`${id}_editor`, name, data, document.body, this.themeSelect);
 
         const rootTitle = this.root.element.querySelector(".editor-item-title") as HTMLElement;

@@ -1,11 +1,10 @@
 @use "../utils/theme";
-
-$bgColor: #ff07b5;
-$textColor: #fff;
-$borderColor: rgb(229, 255, 0);
+$bgColor: #00ffff;
+$textColor: rgb(0, 18, 18);
+$borderColor: rgba(0, 0, 0, 0.22);
 
 @include theme.create-theme(
-  "pink",
+  "cyan",
   $bgColor,
   $textColor,
   $borderColor,

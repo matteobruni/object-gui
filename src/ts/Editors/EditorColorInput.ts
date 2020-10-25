@@ -12,21 +12,21 @@ export class EditorColorInput extends EditorInputBase {
             id,
             name,
             () => "",
-            (value: unknown) => {
+            (v: unknown) => {
                 let colorStringValue: string | undefined;
 
-                if (value === undefined) {
+                if (v === undefined) {
                     colorStringValue = undefined;
-                } else if (typeof value === "string") {
-                    colorStringValue = value;
+                } else if (typeof v === "string") {
+                    colorStringValue = v;
                 } else {
-                    let rgb = value as IRgb;
-                    const hsl = value as IHsl;
+                    let rgb = v as IRgb;
+                    const hsl = v as IHsl;
 
                     if (hsl.h !== undefined && hsl.l !== undefined) {
                         rgb = ColorUtils.hslToRgb(hsl);
                     } else {
-                        const hsv = value as IHsv;
+                        const hsv = v as IHsv;
 
                         if (hsv.h !== undefined && hsv.v !== undefined) {
                             rgb = ColorUtils.hsvToRgb(hsv);
@@ -43,14 +43,14 @@ export class EditorColorInput extends EditorInputBase {
                 return colorStringValue;
             },
             (self: EditorInputBase) => {
-                const input = self.element as HTMLInputElement;
+                const inputEl = self.element as HTMLInputElement;
 
-                return input.value;
+                return inputEl.value;
             },
-            (self: EditorInputBase, value: unknown) => {
-                const input = self.element as HTMLInputElement;
+            (self: EditorInputBase, v: unknown) => {
+                const inputEl = self.element as HTMLInputElement;
 
-                input.value = value as string;
+                inputEl.value = v as string;
             },
             value,
             autoMap

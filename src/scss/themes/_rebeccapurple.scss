@@ -1,17 +1,17 @@
 @use "../utils/theme";
 
-$bgColor: #ff07b5;
-$textColor: #fff;
-$borderColor: rgb(229, 255, 0);
+$bgColor: #663399;
+$textColor: rgb(240, 248, 255);
+$borderColor: rgba(0, 0, 255, 0.3);
 
 @include theme.create-theme(
-  "pink",
+  "rebeccapurple",
   $bgColor,
   $textColor,
   $borderColor,
-  rgba(0, 0, 0, 0.03),
+  rgba(0, 0, 255, 0.3),
   $textColor,
-  rgba(0, 0, 0, 0.125),
+  rgba(240, 248, 255, 1),
   $bgColor,
   $textColor,
   darken($bgColor, 10%)

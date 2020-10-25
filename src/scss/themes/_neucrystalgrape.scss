@@ -1,0 +1,23 @@
+@use "../utils/neutheme";
+
+$bgColor: #8700da;
+$textColor: #6efffdac;
+$lightColor: #a925fa;
+$shadowColor: #6c04ac;
+$activeColor: #6efffdcb;
+$disactiveColor: #3eb1b0ac;
+
+@include neutheme.create-neu-theme(
+  "crystalgrape",
+  $bgColor,
+  $textColor,
+  $textColor,
+  $activeColor,
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%),
+  $activeColor,
+  $disactiveColor,
+  $lightColor,
+  $shadowColor
+);

@@ -1,0 +1,18 @@
+@use "../utils/theme";
+
+$bgColor: #ff3333;
+$textColor: #f8ff33;
+$borderColor: #55ff33;
+
+@include theme.create-theme(
+  "trafficlights",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  rgba(255, 255, 255, 0.25),
+  $textColor,
+  rgba(255, 255, 255, 0.25),
+  $bgColor,
+  $textColor,
+  lighten($bgColor, 20%)
+);

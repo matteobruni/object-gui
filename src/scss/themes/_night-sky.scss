@@ -1,0 +1,24 @@
+@use "../utils/theme";
+
+$bgColor: #081a20;
+$textColor: #f3d3bd;
+$borderColor: #358aa9;
+$titleBgColor: rgba(0, 0, 0, 0.03);
+$titleTextColor: $textColor;
+$sliderBgColor: rgba(53, 138, 169, 0.24);
+$buttonBgColor: #172a3a;
+$buttonTextColor: $textColor;
+$buttonHoverBgColor: #266a83;
+
+@include theme.create-theme(
+  "night-sky",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  $titleBgColor,
+  $titleTextColor,
+  $sliderBgColor,
+  $buttonBgColor,
+  $buttonTextColor,
+  $buttonHoverBgColor
+);

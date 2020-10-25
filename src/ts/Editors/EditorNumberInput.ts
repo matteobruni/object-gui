@@ -17,20 +17,20 @@ export class EditorNumberInput extends EditorInputBase {
             id,
             name,
             () => 0,
-            (value: unknown) => value,
+            (v: unknown) => v,
             (self: EditorInputBase) => {
                 const numberSelf = self as EditorNumberInput;
-                const input = numberSelf.element as HTMLInputElement;
-                const value = parseFloat(input.value);
+                const inputEl = numberSelf.element as HTMLInputElement;
+                const inputValue = parseFloat(inputEl.value);
 
-                return Utils.clamp(value, numberSelf._min ?? value, numberSelf._max ?? value);
+                return Utils.clamp(inputValue, numberSelf._min ?? inputValue, numberSelf._max ?? inputValue);
             },
-            (self: EditorInputBase, value: unknown) => {
+            (self: EditorInputBase, v: unknown) => {
                 const numberSelf = self as EditorNumberInput;
-                const input = numberSelf.element as HTMLInputElement;
-                const numValue = value as number;
+                const inputEl = numberSelf.element as HTMLInputElement;
+                const numValue = v as number;
 
-                input.value = Utils.clamp(
+                inputEl.value = Utils.clamp(
                     numValue,
                     numberSelf._min ?? numValue,
                     numberSelf._max ?? numValue
@@ -146,7 +146,7 @@ export class EditorNumberInput extends EditorInputBase {
             return null;
         }
 
-        return parent.querySelector(".range-slider") as HTMLElement | null;
+        return parent.querySelector(".range-slider");
     }
 
     private updateSliderData(slider: HTMLElement): void {
@@ -268,11 +268,11 @@ export class EditorNumberInput extends EditorInputBase {
         });
 
         window.addEventListener("resize", () => {
-            const rect = slider.getBoundingClientRect();
+            const r = slider.getBoundingClientRect();
 
             this.slider = {
-                left: rect.left,
-                width: rect.width,
+                left: r.left,
+                width: r.width,
             };
 
             this.updateDragger(dragger);

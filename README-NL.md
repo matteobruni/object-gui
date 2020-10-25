@@ -1,24 +1,25 @@
-README in: [Indonesian](./README-ID.md)
-README in: [German](./README-DE.md)
-README in: [Hebrew](./README-IL.md)
-README in: [Spanish](./README-ES.md)
-README in: [Portuguese](./README-BR.md)
+README in: [Indonesisch](./README-ID.md)
+README in: [Duits](./README-DE.md)
+README in: [Hebreeuws](./README-IL.md)
+README in: [Spaans](./README-ES.md)
+README in: [Portugees](./README-BR.md)
 
-# Object GUI - Javascript Object Editor
 
-Object GUI is your fully customizable Javascript Object GUI Editor
+# Object GUI - Javascript Object bewerker
+
+Object GUI is een volledig aanpasbare Javascript Object GUI bewerker.
 
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/matteobruni/object-gui)
 
-## Usage
+## Gebruik
 
-You can see a working sample here: <https://codepen.io/matteobruni/pen/oNxNvja>
+Een werkend voorbeeld kan hier gevonden worden: <https://codepen.io/matteobruni/pen/oNxNvja>
 
-### Installation
+### Installatie
 
 #### HTML / Vanilla JS
 
-You need to include these files:
+Deze files moeten zeker aanwezig zijn:
 
 _CSS_
 
@@ -40,7 +41,7 @@ import { Editor } from "object-gui";
 const Editor = require("object-gui");
 ```
 
-### Usage
+### Gebruik
 
 ```javascript
 const code = document.getElementById("code");

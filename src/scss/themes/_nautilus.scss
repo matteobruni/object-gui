@@ -1,11 +1,11 @@
 @use "../utils/theme";
 
-$bgColor: #ff07b5;
-$textColor: #fff;
-$borderColor: rgb(229, 255, 0);
+$bgColor: #20375e;
+$textColor: #19e5e7;
+$borderColor: #f0bb3a;
 
 @include theme.create-theme(
-  "pink",
+  "nautilus",
   $bgColor,
   $textColor,
   $borderColor,
