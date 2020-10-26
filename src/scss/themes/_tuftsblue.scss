@@ -1,0 +1,18 @@
+@use "../utils/theme";
+
+$bgColor: rgb(88, 204, 237);
+$textColor: rgb(18, 97, 160);
+$borderColor: rgba(0, 0, 0, 0.125);
+
+@include theme.create-theme(
+  "tuftsblue",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  rgba(0, 0, 0, 0.03),
+  $textColor,
+  rgba(0, 0, 0, 0.03),
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%)
+);
