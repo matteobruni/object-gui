@@ -1,0 +1,18 @@
+@use "../utils/theme";
+
+$bgColor: #f0a07c;
+$textColor: #4a274f;
+$borderColor: #e45b1c;
+
+@include theme.create-theme(
+  "starbell",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  rgba(0, 0, 0, 0.03),
+  $textColor,
+  rgba(0, 0, 0, 0.03),
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%)
+);

@@ -1,0 +1,18 @@
+@use "../utils/theme";
+
+$bgColor: #df678c;
+$textColor: #3d155f;
+$borderColor: #ce4971;
+
+@include theme.create-theme(
+  "peach",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  rgba(0, 0, 0, 0.03),
+  $textColor,
+  rgba(0, 0, 0, 0.03),
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%)
+);
