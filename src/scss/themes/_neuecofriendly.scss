@@ -1,0 +1,23 @@
+@use "../utils/neutheme";
+
+$bgColor: #7ac968;
+$textColor: #394141;
+$lightColor: #8fd974;
+$shadowColor: #5bb462;
+$activeColor: #0db14b;
+$disactiveColor: #ccc;
+
+@include neutheme.create-neu-theme(
+  "ecofriendly",
+  $bgColor,
+  $textColor,
+  $textColor,
+  $activeColor,
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%),
+  $activeColor,
+  $disactiveColor,
+  $lightColor,
+  $shadowColor
+);

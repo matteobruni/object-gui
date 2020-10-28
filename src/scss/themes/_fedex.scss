@@ -1,0 +1,18 @@
+@use "../utils/theme";
+
+$bgColor: #ed642b;
+$textColor: #250c77;
+$borderColor: #ff4d00;
+
+@include theme.create-theme(
+  "fedex",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  rgba(0, 0, 0, 0.03),
+  $textColor,
+  rgba(0, 0, 0, 0.125),
+  $bgColor,
+  $textColor,
+  darken($bgColor, 100%)
+);
