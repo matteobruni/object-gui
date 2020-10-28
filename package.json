@@ -42,7 +42,7 @@
     "build:demo": "yarn build:demo:style && yarn build:demo:index",
     "build:demo:index": "npx pug ./demo/views/index.pug",
     "build:demo:style": "npx stylus ./demo/public/stylesheets/main.styl",
-    "prepare": "yarn build"
+    "prepack": "yarn build"
   },
   "bugs": {
     "url": "https://github.com/matteobruni/object-gui/issues"
