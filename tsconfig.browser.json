@@ -10,7 +10,7 @@
     "outDir": "./dist/js",
     "rootDir": "./src/ts",
     "removeComments": true,
-    "importHelpers": true,
+    "importHelpers": false,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
