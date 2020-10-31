@@ -1,0 +1,23 @@
+@use "../utils/neutheme";
+
+$bgColor: #caac48;
+$textColor: #072f54;
+$lightColor: #bba86b;
+$shadowColor: #f1be17;
+$activeColor: #ffc400;
+$disactiveColor: #ccc;
+
+@include neutheme.create-neu-theme(
+  "expedia",
+  $bgColor,
+  $textColor,
+  $textColor,
+  $activeColor,
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%),
+  $activeColor,
+  $disactiveColor,
+  $lightColor,
+  $shadowColor
+);

@@ -1,0 +1,23 @@
+@use "../utils/neutheme";
+
+$bgColor: #00aeef;
+$textColor: #191919;
+$lightColor: #75d1e0;
+$shadowColor: #158ec2;
+$activeColor: #0099ff;
+$disactiveColor: #ccc;
+
+@include neutheme.create-neu-theme(
+  "blue",
+  $bgColor,
+  $textColor,
+  $textColor,
+  $activeColor,
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%),
+  $activeColor,
+  $disactiveColor,
+  $lightColor,
+  $shadowColor
+);
