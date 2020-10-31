@@ -1,0 +1,23 @@
+@use "../utils/neutheme";
+
+$bgColor: #44b9a6;
+$textColor: #191919;
+$lightColor: #7eddcd;
+$shadowColor: #21d0b2;
+$activeColor: #00ffd5;
+$disactiveColor: #ccc;
+
+@include neutheme.create-neu-theme(
+  "caribbean",
+  $bgColor,
+  $textColor,
+  $textColor,
+  $activeColor,
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%),
+  $activeColor,
+  $disactiveColor,
+  $lightColor,
+  $shadowColor
+);

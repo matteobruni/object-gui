@@ -61,6 +61,10 @@ export class Editor {
         this.addTheme("neu-ecofriendly");
         this.addTheme("neu-gold");
         this.addTheme("neu-silver");
+        this.addTheme("neu-orange");
+        this.addTheme("neu-blue");
+        this.addTheme("neu-expedia");
+        this.addTheme("neu-caribbean");
         this.root = EditorGroup.createRoot(`${id}_editor`, name, data, document.body, this.themeSelect);
 
         const rootTitle = this.root.element.querySelector(".editor-item-title") as HTMLElement;
