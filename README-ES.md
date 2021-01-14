@@ -6,7 +6,7 @@ README em: [Holandés](./README-NL.md)
 
 # Object GUI - Javascript Object Editor
 
-Object GUI es tu editor visual de Objetos Javascript altamente customizable
+Object GUI es tu editor visual de Objetos Javascript altamente personalizable
 
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/matteobruni/object-gui)
 
