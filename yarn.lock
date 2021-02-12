@@ -819,9 +819,9 @@ chrome-trace-event@^1.0.2:
     tslib "^1.9.0"
 
 clean-css-cli@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/clean-css-cli/-/clean-css-cli-5.0.0.tgz#d0fe16eacdfb7300025c0671d4c2f69354fb06f5"
-  integrity sha512-/oop9svxk5zbqxWPco+O24FN+gALRtjF2Iac9vzcye81JlbyT0O6nT2IZvr2gHPtio4EFTfvGcsHqivDhg2y8g==
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/clean-css-cli/-/clean-css-cli-5.0.1.tgz#29c00d802522f5df9a160c08be8399d8a95783d7"
+  integrity sha512-6Y+G8FmQu76rSWQjSBY5rVcdgatknjvzfEUU5xtx1uaYovClg7jap7ol3Xf3NP7vMd1fs38TtfhsyIS8Dq0Jvw==
   dependencies:
     clean-css "^5.0.1"
     commander "7.x"
