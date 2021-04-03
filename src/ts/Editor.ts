@@ -1,6 +1,7 @@
-import { EditorType, SingleOrMultiple } from ".";
+import { EditorType } from "./Enums";
 import { EditorButton, EditorGroup } from "./Editors";
 import { EditorInputBase } from "./Editors/EditorInputBase";
+import { SingleOrMultiple } from "./Types";
 
 export class Editor {
     private readonly root;
@@ -25,46 +26,48 @@ export class Editor {
 
         this._themes = [];
 
+        this.addTheme("ashgrey");
         this.addTheme("blue");
-        this.addTheme("dark");
-        this.addTheme("green");
-        this.addTheme("light");
-        this.addTheme("neu-dark");
-        this.addTheme("neu-light");
-        this.addTheme("neu-moon");
-        this.addTheme("red");
         this.addTheme("brown");
-        this.addTheme("purple");
-        this.addTheme("sunlight");
-        this.addTheme("moonlight");
-        this.addTheme("orange");
-        this.addTheme("gold");
-        this.addTheme("grey");
-        this.addTheme("pink");
-        this.addTheme("nautilus");
         this.addTheme("cyan");
-        this.addTheme("yellow");
-        this.addTheme("rebeccapurple");
-        this.addTheme("neu-pink");
-        this.addTheme("night-sky");
-        this.addTheme("neu-crystalgrape");
-        this.addTheme("one-dark");
-        this.addTheme("neu-greysun");
+        this.addTheme("dark");
+        this.addTheme("fedex");
         this.addTheme("gameboy");
+        this.addTheme("gold");
+        this.addTheme("green");
+        this.addTheme("grey");
+        this.addTheme("greyorange");
+        this.addTheme("light");
+        this.addTheme("moonlight");
+        this.addTheme("nautilus");
+        this.addTheme("night-sky");
+        this.addTheme("one-dark");
+        this.addTheme("orange");
+        this.addTheme("peach");
+        this.addTheme("pink");
+        this.addTheme("purple");
+        this.addTheme("rebeccapurple");
+        this.addTheme("red");
+        this.addTheme("starbell");
+        this.addTheme("sunlight");
         this.addTheme("trafficlights");
         this.addTheme("tuftsblue");
-        this.addTheme("ashgrey");
-        this.addTheme("greyorange");
-        this.addTheme("peach");
-        this.addTheme("starbell");
-        this.addTheme("fedex");
-        this.addTheme("neu-ecofriendly");
-        this.addTheme("neu-gold");
-        this.addTheme("neu-silver");
-        this.addTheme("neu-orange");
+        this.addTheme("yellow");
+
         this.addTheme("neu-blue");
-        this.addTheme("neu-expedia");
         this.addTheme("neu-caribbean");
+        this.addTheme("neu-crystalgrape");
+        this.addTheme("neu-dark");
+        this.addTheme("neu-ecofriendly");
+        this.addTheme("neu-expedia");
+        this.addTheme("neu-gold");
+        this.addTheme("neu-greysun");
+        this.addTheme("neu-light");
+        this.addTheme("neu-moon");
+        this.addTheme("neu-orange");
+        this.addTheme("neu-pink");
+        this.addTheme("neu-silver");
+
         this.root = EditorGroup.createRoot(`${id}_editor`, name, data, document.body, this.themeSelect);
 
         const rootTitle = this.root.element.querySelector(".editor-item-title") as HTMLElement;
