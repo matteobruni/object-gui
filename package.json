@@ -31,7 +31,7 @@
   },
   "scripts": {
     "start": "yarn build && yarn build:demo && node ./demo/app.js",
-    "prettify:src": "prettier --write ./src/",
+    "prettify:src": "prettier --write ./src",
     "prettify:readme": "prettier --write ./README.md",
     "lint": "eslint src/ts --ext .js,.jsx,.ts,.tsx --fix",
     "clear:dist": "rimraf -f ./dist",
