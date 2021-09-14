@@ -63,7 +63,7 @@
     "pug": "3.0.2",
     "pug-cli": "1.0.0-alpha6",
     "rimraf": "3.0.2",
-    "sass": "1.39.2",
+    "sass": "1.40.0",
     "sass-loader": "12.1.0",
     "stylus": "0.55.0",
     "terser-webpack-plugin": "5.2.4",
