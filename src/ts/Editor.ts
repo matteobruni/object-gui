@@ -31,6 +31,7 @@ export class Editor {
         this.addTheme("brown");
         this.addTheme("cyan");
         this.addTheme("dark");
+        this.addTheme("darkgreen");
         this.addTheme("fedex");
         this.addTheme("gameboy");
         this.addTheme("gold");
