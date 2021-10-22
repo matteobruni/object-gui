@@ -1,0 +1,20 @@
+@use "../utils/theme";
+
+$bgColor: rgb(88, 129, 87);
+$textColor: rgb(218, 215, 205);
+$sliderBgColor: rgb(58, 90, 64);
+$borderColor: rgb(52, 78, 65);
+$titleTextColor: rgb(58, 90, 64);
+
+@include theme.create-theme(
+  "darkgreen",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  $bgColor,
+  $titleTextColor,
+  $sliderBgColor,
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%)
+);
