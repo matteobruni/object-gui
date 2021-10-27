@@ -1,0 +1,18 @@
+@use "../utils/theme";
+
+$bgColor: #32174d;
+$textColor: #fff;
+$borderColor: #503d63;
+
+@include theme.create-theme(
+  "russian-violet",
+  $bgColor,
+  $textColor,
+  $borderColor,
+  rgba(0, 0, 0, 0.03),
+  $textColor,
+  rgba(0, 0, 0, 0.125),
+  $bgColor,
+  $textColor,
+  darken($bgColor, 15%)
+);

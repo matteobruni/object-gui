@@ -49,6 +49,7 @@ export class Editor {
         this.addTheme("purple");
         this.addTheme("rebeccapurple");
         this.addTheme("red");
+        this.addTheme("russian-violet");
         this.addTheme("starbell");
         this.addTheme("sunlight");
         this.addTheme("trafficlights");
@@ -64,6 +65,7 @@ export class Editor {
         this.addTheme("neu-gold");
         this.addTheme("neu-greysun");
         this.addTheme("neu-light");
+        this.addTheme("neu-metalic");
         this.addTheme("neu-moon");
         this.addTheme("neu-orange");
         this.addTheme("neu-pink");
