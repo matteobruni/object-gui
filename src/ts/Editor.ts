@@ -39,6 +39,7 @@ export class Editor {
         this.addTheme("grey");
         this.addTheme("greyorange");
         this.addTheme("light");
+        this.addTheme("magenta");
         this.addTheme("moonlight");
         this.addTheme("nautilus");
         this.addTheme("night-sky");
