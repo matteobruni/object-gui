@@ -1,0 +1,23 @@
+@use "../utils/neutheme";
+
+$bgColor: #696969;
+$textColor: #fff;
+$lightColor: #909090;
+$shadowColor: #808080;
+$activeColor: hsl(35, 100%, 60%);
+$disactiveColor: #bebebe;
+
+@include neutheme.create-neu-theme(
+  "metalic",
+  $bgColor,
+  $textColor,
+  $textColor,
+  $activeColor,
+  $bgColor,
+  $textColor,
+  darken($bgColor, 10%),
+  $activeColor,
+  $disactiveColor,
+  $lightColor,
+  $shadowColor
+);
