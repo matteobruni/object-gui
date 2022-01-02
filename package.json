@@ -58,7 +58,7 @@
     "eslint-config-prettier": "8.3.0",
     "express": "4.17.2",
     "fibers": "5.0.0",
-    "helmet": "4.6.0",
+    "helmet": "5.0.0",
     "prettier": "2.5.1",
     "pug": "3.0.2",
     "pug-cli": "1.0.0-alpha6",
