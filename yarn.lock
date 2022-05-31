@@ -2854,10 +2854,10 @@ strip-json-comments@^3.1.0, strip-json-comments@^3.1.1:
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.1.1.tgz#31f1281b3832630434831c310c01cccda8cbe006"
   integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
 
-stylus@0.58.0:
-  version "0.58.0"
-  resolved "https://registry.yarnpkg.com/stylus/-/stylus-0.58.0.tgz#1125d8381173356b22c675f165c17da3ec81f5ff"
-  integrity sha512-q27Pof0PINInv/gTO1AH+6C1VkoedEOPp38CB/DFWdSgu4fBCwnxM8cZEm4M1zU+Jr6rmZ75hkmqk2QyDze10g==
+stylus@0.58.1:
+  version "0.58.1"
+  resolved "https://registry.yarnpkg.com/stylus/-/stylus-0.58.1.tgz#7e425bb493c10dde94cf427a138d3eae875a3b44"
+  integrity sha512-AYiCHm5ogczdCPMfe9aeQa4NklB2gcf4D/IhzYPddJjTgPc+k4D/EVE0yfQbZD43MHP3lPy+8NZ9fcFxkrgs/w==
   dependencies:
     css "^3.0.0"
     debug "^4.3.2"
