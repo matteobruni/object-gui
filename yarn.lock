@@ -1421,10 +1421,10 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
-fibers@5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/fibers/-/fibers-5.0.2.tgz#662997f35cf9fc7bd80d4891a4ac08ec73dfe5f7"
-  integrity sha512-ffPy0nw6/twbeAMN64fOmDNpNAvwQCRyAXaco8eaNXg82PUGwj4z0UH/3DvbUfhfa9oVOjkT2MPwSAUzlP+BQA==
+fibers@5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/fibers/-/fibers-5.0.3.tgz#2fd03acb255db66fe693d15beafbf5ae92193fd7"
+  integrity sha512-/qYTSoZydQkM21qZpGLDLuCq8c+B8KhuCQ1kLPvnRNhxhVbvrpmH9l2+Lblf5neDuEsY4bfT7LeO553TXQDvJw==
   dependencies:
     detect-libc "^1.0.3"
 
