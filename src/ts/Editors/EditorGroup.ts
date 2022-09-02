@@ -96,13 +96,15 @@ export class EditorGroup extends EditorItem {
     }
 
     public addGroup(name: string, title: string, collapsed = true, customParent?: () => unknown): EditorGroup {
-        const parentData = (customParent ?? this.data)() as Record<string, unknown>;
+        const data = () => {
+                const parentData = (customParent ?? this.data)() as Record<string, unknown>;
 
-        if (!parentData[name]) {
-            parentData[name] = {};
-        }
+                if (!parentData[name]) {
+                    parentData[name] = {};
+                }
 
-        const data = () => parentData[name],
+                return parentData[name];
+            },
             subGroup = new EditorGroup(data, `${this.name}_${name}`, title, this.childrenGroup, collapsed);
 
         this.children.push(subGroup);
