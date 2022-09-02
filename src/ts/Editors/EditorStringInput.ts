@@ -1,7 +1,7 @@
 import { EditorInputBase } from "./EditorInputBase";
 
 export class EditorStringInput extends EditorInputBase {
-    constructor(data: unknown, id: string, name: string, value?: string, autoMap = true) {
+    constructor(data: () => unknown, id: string, name: string, value?: string, autoMap = true) {
         super(
             data,
             () => document.createElement("input"),

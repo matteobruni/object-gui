@@ -9,11 +9,11 @@ export class Editor {
     private currentTheme?: string;
     private readonly _themes: string[];
 
-    public get data(): unknown {
+    public get data(): () => unknown {
         return this.root.data;
     }
 
-    constructor(id: string, name: string, data: unknown) {
+    constructor(id: string, name: string, data: () => unknown) {
         if (data === null || data === undefined) {
             throw new Error("No valid data argument");
         }
@@ -130,7 +130,7 @@ export class Editor {
         return this.root.addButton(name, label, autoMap);
     }
 
-    public addGroup(name: string, title: string, collapsed = true, customParent?: unknown): EditorGroup {
+    public addGroup(name: string, title: string, collapsed = true, customParent?: () => unknown): EditorGroup {
         return this.root.addGroup(name, title, collapsed, customParent);
     }
 

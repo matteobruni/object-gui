@@ -1,7 +1,7 @@
 import { EditorInputBase } from "./EditorInputBase";
 
 export class EditorCheckboxInput extends EditorInputBase {
-    constructor(data: unknown, id: string, name: string, value?: boolean, autoMap = true) {
+    constructor(data: () => unknown, id: string, name: string, value?: boolean, autoMap = true) {
         super(
             data,
             () => document.createElement("input"),

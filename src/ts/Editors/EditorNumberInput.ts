@@ -10,7 +10,7 @@ export class EditorNumberInput extends EditorInputBase {
         width: number;
     };
 
-    constructor(data: unknown, id: string, name: string, value?: number, autoMap = true) {
+    constructor(data: () => unknown, id: string, name: string, value?: number, autoMap = true) {
         super(
             data,
             () => document.createElement("input"),

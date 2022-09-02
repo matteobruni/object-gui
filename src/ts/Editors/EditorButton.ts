@@ -4,7 +4,7 @@ export class EditorButton extends EditorItem {
     private clickHandler?: () => void;
 
     constructor(
-        data: unknown,
+        data: () => unknown,
         private readonly id: string,
         private readonly name: string,
         private readonly label: string,
@@ -16,7 +16,7 @@ export class EditorButton extends EditorItem {
         this.element.innerText = this.label;
         this.element.addEventListener("click", () => {
             if (this.autoMap) {
-                const obj = this.data as Record<string, unknown>;
+                const obj = this.data() as Record<string, unknown>;
                 const func = obj[this.name];
 
                 if (typeof func === "function") {

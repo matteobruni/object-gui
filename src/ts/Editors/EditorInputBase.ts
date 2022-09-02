@@ -6,7 +6,7 @@ export abstract class EditorInputBase extends EditorItem {
     private changeHandler?: (value: unknown) => void;
 
     protected constructor(
-        data: unknown,
+        data: () => unknown,
         createElement: () => HTMLElement,
         protected readonly id: string,
         protected readonly name: string,
@@ -20,7 +20,7 @@ export abstract class EditorInputBase extends EditorItem {
         super(data, createElement);
 
         const input = this.element;
-        const obj = this.data as Record<string, unknown>;
+        const obj = this.data() as Record<string, unknown>;
 
         input.id = `input_${this.id}`;
 
@@ -39,7 +39,9 @@ export abstract class EditorInputBase extends EditorItem {
         this.value = this.getValueFromInput(this);
 
         if (this.autoMap) {
-            const obj = this.data as Record<string, unknown>;
+            const obj = this.data() as Record<string, unknown>;
+
+            console.log(obj);
 
             obj[this.name] = this.value;
         }

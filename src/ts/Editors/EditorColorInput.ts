@@ -5,7 +5,7 @@ import { EditorInputBase } from "./EditorInputBase";
 export class EditorColorInput extends EditorInputBase {
     private readonly colorInput: HTMLInputElement;
 
-    constructor(data: unknown, id: string, name: string, value?: string | IRgb | IHsl | IHsv, autoMap = true) {
+    constructor(data: () => unknown, id: string, name: string, value?: string | IRgb | IHsl | IHsv, autoMap = true) {
         super(
             data,
             () => document.createElement("input"),
