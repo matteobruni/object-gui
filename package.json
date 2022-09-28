@@ -49,7 +49,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "7.19.1",
+    "@babel/core": "7.19.3",
     "@typescript-eslint/eslint-plugin": "5.38.1",
     "@typescript-eslint/parser": "5.38.1",
     "babel-loader": "8.2.5",
