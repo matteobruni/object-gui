@@ -10,37 +10,37 @@ Object GUI is your fully customizable Javascript Object GUI Editor
 
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/matteobruni/object-gui)
 
-## Usage
+## Usage :receipt:
 
 You can see a working sample here: <https://codepen.io/matteobruni/pen/oNxNvja>
 
-### Installation
+### Installation :wrench: 
 
-#### HTML / Vanilla JS
+#### HTML / Vanilla JS :ice_cream: 
 
 You need to include these files:
 
-_CSS_
+_CSS_ :paintbrush:	
 
 <https://cdn.jsdelivr.net/npm/object-gui@1.0.0-alpha.1/dist/css/object-gui.css>
 
-_Javascript_
+_Javascript_ :hammer_and_wrench:	
 
 <https://cdn.jsdelivr.net/npm/object-gui@1.0.0-alpha.1/dist/js/object-gui.min.js>
 
-#### ES 6 Imports
+#### ES 6 Imports :closed_lock_with_key: 
 
 ```javascript
 import { Editor } from "object-gui";
 ```
 
-#### CommonJS / Node.js
+#### CommonJS / Node.js :link:	
 
 ```javascript
 const Editor = require("object-gui");
 ```
 
-### Usage
+### Usage :receipt: 
 
 ```javascript
 const code = document.getElementById("code");
@@ -110,3 +110,15 @@ editor.root.addButton("alert", "Alert");
 
 code.innerText = JSON.stringify(data, null, 4);
 ```
+
+---
+
+### :trophy: Thanks to all the contributions :hearts:	
+
+<a href="https://github.com/matteobruni/object-gui/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=matteobruni/object-gui" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
+##### Keep contributing! Happy Coding! :v:	
+
