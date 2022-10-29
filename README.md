@@ -120,4 +120,4 @@ code.innerText = JSON.stringify(data, null, 4);
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).
-##### Keep contributing! Happy Coding! ✌️
+#### Keep contributing! Happy Coding! ✌️
