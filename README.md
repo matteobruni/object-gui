@@ -22,11 +22,11 @@ You need to include these files:
 
 _CSS_
 
-<https://cdn.jsdelivr.net/npm/object-gui@1.0.0-alpha.1/dist/css/object-gui.css>
+<https://cdn.jsdelivr.net/npm/object-gui@2/dist/css/object-gui.css>
 
 _Javascript_
 
-<https://cdn.jsdelivr.net/npm/object-gui@1.0.0-alpha.1/dist/js/object-gui.min.js>
+<https://cdn.jsdelivr.net/npm/object-gui@2/dist/js/object-gui.min.js>
 
 #### ES 6 Imports
 
@@ -59,7 +59,7 @@ const data = {
   },
 };
 
-const editor = new Editor("sample", "Sample", data);
+const editor = new Editor("sample", "Sample", () => data);
 
 editor.top().right();
 editor.theme("light");
