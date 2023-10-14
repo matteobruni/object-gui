@@ -2,19 +2,19 @@ README dalam: [Bahasa Inggris](./README.md)
 
 # Object GUI - Javascript Object Editor
 
-Object GUI adalah Editor Objek Javascript GUI yang dapat dikostumisasi dengan penuh
+Object GUI adalah Editor Objek Javascript GUI yang dapat dikustomisasi penuh
 
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/matteobruni/object-gui)
 
 ## Penggunaan
 
-Kamu bisa lihat contohnya disini: <https://codepen.io/matteobruni/pen/oNxNvja>
+Anda dapat melihat contohnya disini: <https://codepen.io/matteobruni/pen/oNxNvja>
 
 ### Instalasi
 
 #### HTML / Vanilla JS
 
-Kamu harus meng-include file-file ini:
+Anda harus menambahkan file-file ini:
 
 _CSS_
 
