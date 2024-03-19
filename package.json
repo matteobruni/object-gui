@@ -65,7 +65,7 @@
     "rimraf": "5.0.5",
     "sass": "1.69.7",
     "sass-loader": "13.3.3",
-    "stylus": "0.62.0",
+    "stylus": "0.63.0",
     "terser-webpack-plugin": "5.3.9",
     "typescript": "5.3.3",
     "webpack": "5.89.0",
