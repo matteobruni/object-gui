@@ -67,7 +67,7 @@
     "sass-loader": "14.1.1",
     "stylus": "0.62.0",
     "terser-webpack-plugin": "5.3.9",
-    "typescript": "5.4.4",
+    "typescript": "5.4.5",
     "webpack": "5.89.0",
     "webpack-bundle-analyzer": "4.10.1",
     "webpack-cli": "5.1.4"
