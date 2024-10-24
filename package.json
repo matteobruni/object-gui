@@ -62,7 +62,7 @@
     "prettier": "3.2.5",
     "pug": "3.0.3",
     "pug-cli": "1.0.0-alpha6",
-    "rimraf": "5.0.7",
+    "rimraf": "5.0.10",
     "sass": "1.80.4",
     "sass-loader": "14.2.1",
     "stylus": "0.62.0",
